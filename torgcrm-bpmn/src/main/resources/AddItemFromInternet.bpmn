@@ -1,98 +1,185 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://torgcrm.ru/ecommerce" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://torgcrm.ru/ecommerce" id="m1520080960436" name="">
-  <process id="AddItemFromInternet" name="Add item from internet" isExecutable="true" isClosed="false" processType="None">
-    <startEvent id="startevent1" name="Start"></startEvent>
-    <userTask id="addPhotoAndLink" name="Add photo and link from website">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://torgcrm.ru/ecommerce" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:yaoqiang="http://bpmn.sourceforge.net" exporter="Yaoqiang BPMN Editor" exporterVersion="5.3" expressionLanguage="http://www.w3.org/1999/XPath" id="m1520080960436" name="" targetNamespace="http://torgcrm.ru/crm" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://bpmn.sourceforge.net/schemas/BPMN20.xsd">
+  <process id="AddItemFromInternet" isClosed="false" isExecutable="true" name="Add item from internet" processType="None">
+    <extensionElements>
+      <yaoqiang:description/>
+      <yaoqiang:pageFormat height="841.8897637795276" imageableHeight="831.8897637795276" imageableWidth="588.1102362204724" imageableX="5.0" imageableY="5.0" orientation="0" width="598.1102362204724"/>
+      <yaoqiang:page background="#FFFFFF" horizontalCount="1" verticalCount="1"/>
+    </extensionElements>
+    <startEvent id="startevent1" isInterrupting="true" name="Start" parallelMultiple="false">
+      <outgoing>startFlow</outgoing>
+      <outputSet/>
+    </startEvent>
+    <userTask completionQuantity="1" id="addPhotoAndLink" implementation="##unspecified" isForCompensation="false" name="Add photo and link from website" startQuantity="1">
       <extensionElements>
-        <activiti:formProperty id="itemName" name="Item name" type="string" required="true"></activiti:formProperty>
-        <activiti:formProperty id="website" name="Website" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="name" name="Name" required="true" type="string"/>
+        <activiti:formProperty id="url" name="Url" required="true" type="string"/>
       </extensionElements>
+      <incoming>startFlow</incoming>
+      <outgoing>flow2</outgoing>
     </userTask>
-    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="addPhotoAndLink"></sequenceFlow>
-    <userTask id="itemValidation" name="Validate item"></userTask>
-    <sequenceFlow id="flow2" sourceRef="addPhotoAndLink" targetRef="itemValidation"></sequenceFlow>
-    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
-    <sequenceFlow id="flow3" sourceRef="itemValidation" targetRef="exclusivegateway1"></sequenceFlow>
-    <userTask id="notValid" name="Not valid">
+    <sequenceFlow id="startFlow" sourceRef="startevent1" targetRef="addPhotoAndLink"/>
+    <userTask completionQuantity="1" id="itemValidation" implementation="##unspecified" isForCompensation="false" name="Validate item" startQuantity="1">
       <extensionElements>
-        <activiti:formProperty id="reason" name="Reason" type="string"></activiti:formProperty>
+        <activiti:formProperty id="comments" name="Comments" type="string"/>
       </extensionElements>
+      <incoming>flow2</incoming>
+      <outgoing>flow3</outgoing>
+    </userTask>
+    <sequenceFlow id="flow2" sourceRef="addPhotoAndLink" targetRef="itemValidation"/>
+    <exclusiveGateway gatewayDirection="Unspecified" id="exclusivegateway1" name="Exclusive Gateway">
+      <incoming>flow3</incoming>
+      <outgoing>flow7</outgoing>
+      <outgoing>flow10</outgoing>
+      <outgoing>flow14</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="flow3" sourceRef="itemValidation" targetRef="exclusivegateway1"/>
+    <userTask completionQuantity="1" id="notValid" implementation="##unspecified" isForCompensation="false" name="Not valid" startQuantity="1">
+      <extensionElements>
+        <activiti:formProperty id="comments" name="Comments" type="string"/>
+      </extensionElements>
+      <incoming>flow7</incoming>
+      <outgoing>flow8</outgoing>
     </userTask>
     <sequenceFlow id="flow7" sourceRef="exclusivegateway1" targetRef="notValid">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${valid==false}]]></conditionExpression>
     </sequenceFlow>
-    <endEvent id="endevent1" name="End"></endEvent>
-    <sequenceFlow id="flow8" sourceRef="notValid" targetRef="endevent1"></sequenceFlow>
-    <callActivity id="callSettingUpParser" name="Setting up parser subprocess" calledElement="SettingUpParser"></callActivity>
-    <sequenceFlow id="flow9" sourceRef="exclusivegateway1" targetRef="callSettingUpParser">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${valid==true}]]></conditionExpression>
+    <endEvent id="endevent1" name="End">
+      <incoming>flow8</incoming>
+      <incoming>flow11</incoming>
+      <inputSet/>
+    </endEvent>
+    <sequenceFlow id="flow8" sourceRef="notValid" targetRef="endevent1"/>
+    <callActivity calledElement="SettingUpParser" completionQuantity="1" id="callSettingUpParser" isForCompensation="false" name="Setting up parser subprocess" startQuantity="1">
+      <incoming>flow10</incoming>
+      <outgoing>flow13</outgoing>
+    </callActivity>
+    <callActivity calledElement="addItem" completionQuantity="1" id="addItem" isForCompensation="false" name="Add item process" startQuantity="1">
+      <incoming>flow13</incoming>
+      <incoming>flow14</incoming>
+      <outgoing>flow11</outgoing>
+    </callActivity>
+    <sequenceFlow id="flow10" sourceRef="exclusivegateway1" targetRef="callSettingUpParser">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${valid==true && parserRequired==true}]]></conditionExpression>
     </sequenceFlow>
-    <sequenceFlow id="flow10" sourceRef="callSettingUpParser" targetRef="manuallyAddItem"></sequenceFlow>
-    <userTask id="manuallyAddItem" name="Manually add item"></userTask>
-    <sequenceFlow id="flow11" sourceRef="exclusivegateway1" targetRef="manuallyAddItem"></sequenceFlow>
-    <sequenceFlow id="flow12" sourceRef="manuallyAddItem" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="flow11" sourceRef="addItem" targetRef="endevent1"/>
+    <sequenceFlow id="flow13" sourceRef="callSettingUpParser" targetRef="addItem"/>
+    <sequenceFlow id="flow14" sourceRef="exclusivegateway1" targetRef="addItem">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${valid==true && parserRequired==false}]]></conditionExpression>
+    </sequenceFlow>
   </process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_AddItemFromInternet">
-    <bpmndi:BPMNPlane bpmnElement="AddItemFromInternet" id="BPMNPlane_AddItemFromInternet">
-      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
-        <omgdc:Bounds height="35.0" width="35.0" x="240.0" y="60.0"></omgdc:Bounds>
+  <bpmndi:BPMNDiagram id="Yaoqiang_Diagram-AddItemFromInternet" name="Untitled Diagram" resolution="96.0">
+    <bpmndi:BPMNPlane bpmnElement="AddItemFromInternet">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="Yaoqiang-startevent1">
+        <omgdc:Bounds height="32.0" width="32.0" x="80.0" y="180.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="31.0" x="80.5" y="220.52"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="addPhotoAndLink" id="BPMNShape_addPhotoAndLink">
-        <omgdc:Bounds height="71.0" width="105.0" x="205.0" y="162.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="addPhotoAndLink" id="Yaoqiang-addPhotoAndLink">
+        <omgdc:Bounds height="71.0" width="105.0" x="205.0" y="162.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="46.96" width="86.0" x="214.5" y="176.02"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="itemValidation" id="BPMNShape_itemValidation">
-        <omgdc:Bounds height="55.0" width="105.0" x="355.0" y="170.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="itemValidation" id="Yaoqiang-itemValidation">
+        <omgdc:Bounds height="55.0" width="105.0" x="355.0" y="170.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="74.0" x="370.5" y="190.02"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
-        <omgdc:Bounds height="40.0" width="40.0" x="505.0" y="177.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="Yaoqiang-exclusivegateway1" isMarkerVisible="true">
+        <omgdc:Bounds height="42.0" width="42.0" x="505.0" y="177.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="103.0" x="474.5" y="221.0"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="notValid" id="BPMNShape_notValid">
-        <omgdc:Bounds height="55.0" width="105.0" x="610.0" y="170.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="notValid" id="Yaoqiang-notValid">
+        <omgdc:Bounds height="55.0" width="105.0" x="661.0" y="170.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="53.0" x="687.0" y="190.02"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
-        <omgdc:Bounds height="35.0" width="35.0" x="800.0" y="180.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="Yaoqiang-endevent1">
+        <omgdc:Bounds height="32.0" width="32.0" x="800.0" y="180.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="26.0" x="803.0" y="220.52"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="callSettingUpParser" id="BPMNShape_callSettingUpParser">
-        <omgdc:Bounds height="73.0" width="105.0" x="473.0" y="335.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="callSettingUpParser" id="Yaoqiang-callSettingUpParser" isExpanded="false">
+        <omgdc:Bounds height="73.0" width="105.0" x="473.0" y="335.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="46.96" width="69.0" x="491.0" y="350.02"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="manuallyAddItem" id="BPMNShape_manuallyAddItem">
-        <omgdc:Bounds height="55.0" width="105.0" x="765.0" y="344.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="addItem" id="Yaoqiang-addItem">
+        <omgdc:Bounds height="73.0" width="105.0" x="765.0" y="335.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="32.96" width="54.0" x="790.5" y="357.02"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="257.0" y="95.0"></omgdi:waypoint>
-        <omgdi:waypoint x="257.0" y="162.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow14" id="Yaoqiang-flow14">
+        <omgdi:waypoint x="547.0" y="198.0"/>
+        <omgdi:waypoint x="765.0" y="371.5"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="234.0" x="539.0" y="275.27"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
-        <omgdi:waypoint x="310.0" y="197.0"></omgdi:waypoint>
-        <omgdi:waypoint x="355.0" y="197.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow13" id="Yaoqiang-flow13">
+        <omgdi:waypoint x="578.0" y="371.5"/>
+        <omgdi:waypoint x="765.0" y="371.5"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="6.0" x="668.5" y="362.02"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
-        <omgdi:waypoint x="460.0" y="197.0"></omgdi:waypoint>
-        <omgdi:waypoint x="505.0" y="197.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="Yaoqiang-flow11">
+        <omgdi:waypoint x="816.0" y="335.0"/>
+        <omgdi:waypoint x="816.0" y="212.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="6.0" x="813.0" y="264.02"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
-        <omgdi:waypoint x="545.0" y="197.0"></omgdi:waypoint>
-        <omgdi:waypoint x="610.0" y="197.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="Yaoqiang-flow10">
+        <omgdi:waypoint x="526.0" y="219.0"/>
+        <omgdi:waypoint x="526.0" y="335.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="231.0" x="410.5" y="267.52"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
-        <omgdi:waypoint x="715.0" y="197.0"></omgdi:waypoint>
-        <omgdi:waypoint x="800.0" y="197.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="startFlow" id="Yaoqiang-startFlow">
+        <omgdi:waypoint x="112.0" y="196.0"/>
+        <omgdi:waypoint x="205.0" y="197.5"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="6.0" x="155.5" y="187.27"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
-        <omgdi:waypoint x="525.0" y="217.0"></omgdi:waypoint>
-        <omgdi:waypoint x="525.0" y="335.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="Yaoqiang-flow8">
+        <omgdi:waypoint x="766.0" y="197.5"/>
+        <omgdi:waypoint x="800.0" y="196.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="6.0" x="780.0" y="187.27"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
-        <omgdi:waypoint x="578.0" y="371.0"></omgdi:waypoint>
-        <omgdi:waypoint x="765.0" y="371.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="Yaoqiang-flow7">
+        <omgdi:waypoint x="547.0" y="198.0"/>
+        <omgdi:waypoint x="661.0" y="197.5"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="89.0" x="559.5" y="188.27"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
-        <omgdi:waypoint x="525.0" y="217.0"></omgdi:waypoint>
-        <omgdi:waypoint x="817.0" y="344.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="Yaoqiang-flow3">
+        <omgdi:waypoint x="460.0" y="197.5"/>
+        <omgdi:waypoint x="505.0" y="198.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="6.0" x="479.5" y="188.27"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
-        <omgdi:waypoint x="817.0" y="344.0"></omgdi:waypoint>
-        <omgdi:waypoint x="817.0" y="215.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="Yaoqiang-flow2">
+        <omgdi:waypoint x="310.0" y="197.5"/>
+        <omgdi:waypoint x="355.0" y="197.5"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="18.96" width="6.0" x="329.5" y="188.02"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

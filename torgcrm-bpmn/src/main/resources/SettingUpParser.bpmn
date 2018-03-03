@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://torgcrm.ru/ecommerce" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://torgcrm.ru/ecommerce" id="m1520080974264" name="">
-  <process id="SettingUpParser" isExecutable="true" isClosed="false" processType="None">
-    <startEvent id="SettingUpParserStarter" name="StartEvent"></startEvent>
-    <userTask id="someTask" name="Some task"></userTask>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://torgcrm.ru/ecommerce" xmlns:yaoqiang="http://bpmn.sourceforge.net" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://torgcrm.ru/crm" id="m1520080974264" name="">
+  <process id="SettingUpParser" name="Setting up parser" isExecutable="true" isClosed="false" processType="None">
+    <extensionElements>
+      <yaoqiang:description xmlns:yaoqiang="http://bpmn.sourceforge.net"></yaoqiang:description>
+      <yaoqiang:pageFormat xmlns:yaoqiang="http://bpmn.sourceforge.net" height="841.8897637795276" imageableHeight="831.8897637795276" imageableWidth="588.1102362204724" imageableX="5.0" imageableY="5.0" orientation="0" width="598.1102362204724"></yaoqiang:pageFormat>
+      <yaoqiang:page xmlns:yaoqiang="http://bpmn.sourceforge.net" background="#FFFFFF" horizontalCount="1" verticalCount="1"></yaoqiang:page>
+    </extensionElements>
+    <userTask id="someTask" name="Some task" completionQuantity="1" implementation="##unspecified" isForCompensation="false" startQuantity="1"></userTask>
     <sequenceFlow id="flow1" sourceRef="SettingUpParserStarter" targetRef="someTask"></sequenceFlow>
+    <startEvent id="SettingUpParserStarter" name="StartEvent">
+      <extensionElements>
+        <yaoqiang:label offset-x="-201.0" offset-y="26.0"></yaoqiang:label>
+      </extensionElements>
+    </startEvent>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_SettingUpParser">
     <bpmndi:BPMNPlane bpmnElement="SettingUpParser" id="BPMNPlane_SettingUpParser">
-      <bpmndi:BPMNShape bpmnElement="SettingUpParserStarter" id="BPMNShape_SettingUpParserStarter">
-        <omgdc:Bounds height="35.0" width="35.0" x="205.0" y="85.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="someTask" id="BPMNShape_someTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="285.0" y="75.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="260.0" y="42.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="SettingUpParserStarter" id="BPMNShape_SettingUpParserStarter">
+        <omgdc:Bounds height="35.0" width="35.0" x="70.0" y="52.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="240.0" y="102.0"></omgdi:waypoint>
-        <omgdi:waypoint x="285.0" y="102.0"></omgdi:waypoint>
+        <omgdi:waypoint x="105.0" y="69.0"></omgdi:waypoint>
+        <omgdi:waypoint x="260.0" y="69.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
