@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://torgcrm.ru/ecommerce" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://torgcrm.ru/ecommerce" id="m1520080960436" name="">
+  <process id="AddItemFromInternet" name="Add item from internet" isExecutable="true" isClosed="false" processType="None">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <userTask id="addPhotoAndLink" name="Add photo and link from website">
+      <extensionElements>
+        <activiti:formProperty id="itemName" name="Item name" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="website" name="Website" type="string" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="addPhotoAndLink"></sequenceFlow>
+    <userTask id="itemValidation" name="Validate item"></userTask>
+    <sequenceFlow id="flow2" sourceRef="addPhotoAndLink" targetRef="itemValidation"></sequenceFlow>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow3" sourceRef="itemValidation" targetRef="exclusivegateway1"></sequenceFlow>
+    <userTask id="notValid" name="Not valid">
+      <extensionElements>
+        <activiti:formProperty id="reason" name="Reason" type="string"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow7" sourceRef="exclusivegateway1" targetRef="notValid">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${valid==false}]]></conditionExpression>
+    </sequenceFlow>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <sequenceFlow id="flow8" sourceRef="notValid" targetRef="endevent1"></sequenceFlow>
+    <callActivity id="callSettingUpParser" name="Setting up parser subprocess" calledElement="SettingUpParser"></callActivity>
+    <sequenceFlow id="flow9" sourceRef="exclusivegateway1" targetRef="callSettingUpParser">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${valid==true}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow10" sourceRef="callSettingUpParser" targetRef="manuallyAddItem"></sequenceFlow>
+    <userTask id="manuallyAddItem" name="Manually add item"></userTask>
+    <sequenceFlow id="flow11" sourceRef="exclusivegateway1" targetRef="manuallyAddItem"></sequenceFlow>
+    <sequenceFlow id="flow12" sourceRef="manuallyAddItem" targetRef="endevent1"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_AddItemFromInternet">
+    <bpmndi:BPMNPlane bpmnElement="AddItemFromInternet" id="BPMNPlane_AddItemFromInternet">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="240.0" y="60.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="addPhotoAndLink" id="BPMNShape_addPhotoAndLink">
+        <omgdc:Bounds height="71.0" width="105.0" x="205.0" y="162.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="itemValidation" id="BPMNShape_itemValidation">
+        <omgdc:Bounds height="55.0" width="105.0" x="355.0" y="170.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="505.0" y="177.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="notValid" id="BPMNShape_notValid">
+        <omgdc:Bounds height="55.0" width="105.0" x="610.0" y="170.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="800.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="callSettingUpParser" id="BPMNShape_callSettingUpParser">
+        <omgdc:Bounds height="73.0" width="105.0" x="473.0" y="335.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="manuallyAddItem" id="BPMNShape_manuallyAddItem">
+        <omgdc:Bounds height="55.0" width="105.0" x="765.0" y="344.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="257.0" y="95.0"></omgdi:waypoint>
+        <omgdi:waypoint x="257.0" y="162.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="310.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="355.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="460.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="505.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="545.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="610.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="715.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="800.0" y="197.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="525.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="525.0" y="335.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="578.0" y="371.0"></omgdi:waypoint>
+        <omgdi:waypoint x="765.0" y="371.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="525.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="817.0" y="344.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="817.0" y="344.0"></omgdi:waypoint>
+        <omgdi:waypoint x="817.0" y="215.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
