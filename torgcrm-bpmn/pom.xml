@@ -4,6 +4,9 @@
     <groupId>ru.torgcrm.jee.crm</groupId>
     <artifactId>torgcrm-bpmn</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>TorgCRM BPMN module</name>
+    <url>http://torgcrm.ru</url>
+
     <build>
         <plugins>
             <plugin>
