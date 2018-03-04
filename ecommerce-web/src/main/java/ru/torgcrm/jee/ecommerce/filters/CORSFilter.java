@@ -6,6 +6,11 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
+/**
+ * CORS Filter to requests from other hosts
+ *
+ * @author Ilya Durdyev, funbanji@gmail.com
+ */
 @Provider
 public class CORSFilter implements ContainerResponseFilter {
 

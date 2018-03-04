@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Product resource
+ *
+ * @author Ilya Durdyev, funbanji@gmail.com
+ */
 @Path("/products")
 public class ProductsResource {
     @GET
