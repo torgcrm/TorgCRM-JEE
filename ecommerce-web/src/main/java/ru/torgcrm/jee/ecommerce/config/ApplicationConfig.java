@@ -1,4 +1,4 @@
-package ru.torgcrm.jee.ecommerce;
+package ru.torgcrm.jee.ecommerce.config;
 
 
 import javax.ws.rs.ApplicationPath;

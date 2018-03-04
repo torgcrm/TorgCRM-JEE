@@ -9,5 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <name>TorgCRM ECommerce BPMN module</name>
     <url>http://torgcrm.ru</url>
-    
+    <parent>
+        <groupId>ru.torgcrm.jee</groupId>
+        <artifactId>torgcrm-jee</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
 </project>

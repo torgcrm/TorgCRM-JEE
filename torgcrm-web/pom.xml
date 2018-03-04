@@ -5,18 +5,35 @@
     <artifactId>torgcrm-web</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>TorgCRM Main CRM JAX-RS Application</name>
+    <name>TorgCRM Main CRM JAX-RS</name>
     <url>http://torgcrm.ru</url>
+    <parent>
+        <groupId>ru.torgcrm.jee</groupId>
+        <artifactId>torgcrm-jee</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
-        <finalName>torgcrm-web</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>

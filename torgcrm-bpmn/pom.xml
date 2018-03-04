@@ -6,6 +6,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>TorgCRM BPMN module</name>
     <url>http://torgcrm.ru</url>
+    <parent>
+        <groupId>ru.torgcrm.jee</groupId>
+        <artifactId>torgcrm-jee</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <build>
         <plugins>
