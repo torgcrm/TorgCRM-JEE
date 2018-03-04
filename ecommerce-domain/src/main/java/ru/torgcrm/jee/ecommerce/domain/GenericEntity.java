@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @MappedSuperclass
-public abstract class GenericEntity {
+public abstract class GenericEntity implements Serializable {
     @Setter
     private Long id;
     @Getter

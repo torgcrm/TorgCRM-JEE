@@ -6,9 +6,7 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="CargoTrackerUnit">
         <jta-data-source>jdbc/TorgCRM_Main</jta-data-source>
-        <properties>
-            <property name="javax.persistence.schema-generation.database.action" value="create"/>
-            <property name="eclipselink.logging.level" value="FINEST"/>
-        </properties>
+
+        <class>ru.torgcrm.jee.ecommerce.domain.Product</class>
     </persistence-unit>
 </persistence>

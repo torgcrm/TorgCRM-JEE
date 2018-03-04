@@ -1,5 +1,7 @@
 CREATE TABLE products (
   id INTEGER NOT NULL,
   title VARCHAR(25) NOT NULL,
+  created TIME DEFAULT NOW(),
+  updated TIME DEFAULT NOW(),
   PRIMARY KEY(id)
 );
