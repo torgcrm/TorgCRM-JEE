@@ -30,10 +30,9 @@ public class JpaGenericRepository<T extends GenericEntity>
     @Override
     public List<T> findAll() {
         try {
-            Class clazz = getTemplateClass();
             CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-            CriteriaQuery<T> cQuery = cb.createQuery(clazz);
-            Root<T> root = cQuery.from(clazz);
+            CriteriaQuery<T> cQuery = cb.createQuery(getTemplateClass());
+            Root<T> root = cQuery.from(getTemplateClass());
             cQuery.select(root);
             return entityManager.createQuery(cQuery).getResultList();
         } catch (ClassNotFoundException e) {
@@ -43,23 +42,34 @@ public class JpaGenericRepository<T extends GenericEntity>
     }
 
     @Override
-    public T findById() {
+    public T findById(Long id) {
+        try {
+            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+            CriteriaQuery<T> cQuery = cb.createQuery(getTemplateClass());
+            Root<T> root = cQuery.from(getTemplateClass());
+            cQuery.select(root).where(cb.equal(root.get("id"), id));
+            return entityManager.createQuery(cQuery).getSingleResult();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public T save(T entity) {
-        return null;
+        entityManager.persist(entity);
+        entityManager.refresh(entity);
+        return entity;
     }
 
     @Override
     public void delete(T entity) {
-
+        entityManager.remove(entity);
     }
 
     @Override
     public void delete(Long id) {
-
+        entityManager.remove(findById(id));
     }
 
     private Class getTemplateClass() throws ClassNotFoundException {

@@ -22,7 +22,7 @@ public interface GenericRepository<T extends GenericEntity> {
      *
      * @return entity
      */
-    T findById();
+    T findById(Long id);
 
     /**
      * Save or update entity in database

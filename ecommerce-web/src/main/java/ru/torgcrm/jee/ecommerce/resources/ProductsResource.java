@@ -27,6 +27,8 @@ public class ProductsResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProductDTO> getProducts() {
         List<ProductDTO> products = productService.findAll();
+        ProductDTO product = productService.findById(1L);
+        products.add(product);
         return products;
     }
 }

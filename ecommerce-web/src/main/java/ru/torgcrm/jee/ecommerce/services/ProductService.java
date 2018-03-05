@@ -25,4 +25,9 @@ public class ProductService implements IProductService {
     public List<ProductDTO> findAll() {
         return productMapper.toDto(productRepository.findAll());
     }
+
+    @Override
+    public ProductDTO findById(Long id) {
+        return productMapper.toDto(productRepository.findById(id));
+    }
 }
