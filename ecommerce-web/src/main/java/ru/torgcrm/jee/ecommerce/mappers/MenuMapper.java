@@ -5,6 +5,10 @@ import ru.torgcrm.jee.ecommerce.domain.Menu;
 import ru.torgcrm.jee.ecommerce.dto.MenuDTO;
 
 /**
+ * Mapper for Menu item
+ * {@link Menu}
+ * {@link MenuDTO}
+ *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Mapper(componentModel = "cdi")

@@ -5,6 +5,8 @@ import ru.torgcrm.jee.ecommerce.domain.MenuItem;
 import javax.enterprise.context.ApplicationScoped;
 
 /**
+ * JPA repository for items {@link MenuItem}
+ *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @ApplicationScoped

@@ -20,18 +20,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JSON support -->
-        <!-- Object to JSON -->
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-json</artifactId>
-        </dependency>
-        <!-- JSON to List - MessageBodyReader media type -->
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-        </dependency>
-
         <!-- JUnit -->
         <dependency>
             <groupId>junit</groupId>

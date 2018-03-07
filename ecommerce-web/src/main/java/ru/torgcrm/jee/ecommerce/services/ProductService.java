@@ -1,5 +1,6 @@
 package ru.torgcrm.jee.ecommerce.services;
 
+import ru.torgcrm.jee.ecommerce.domain.Product;
 import ru.torgcrm.jee.ecommerce.dto.ProductDTO;
 import ru.torgcrm.jee.ecommerce.mappers.ProductMapper;
 import ru.torgcrm.jee.ecommerce.repository.ProductRepository;
@@ -23,11 +24,19 @@ public class ProductService implements IProductService {
 
     @Override
     public List<ProductDTO> findAll() {
-        return productMapper.toDto(productRepository.findAll());
+        List<Product> productDtos = productRepository.findAll();
+        if (productDtos != null) {
+            return productMapper.toDto(productDtos);
+        }
+        return null;
     }
 
     @Override
     public ProductDTO findById(Long id) {
-        return productMapper.toDto(productRepository.findById(id));
+        Product product = productRepository.findById(id);
+        if (product != null) {
+            return productMapper.toDto(product);
+        }
+        return null;
     }
 }

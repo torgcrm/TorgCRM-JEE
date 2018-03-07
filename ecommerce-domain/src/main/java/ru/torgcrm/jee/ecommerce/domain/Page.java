@@ -8,10 +8,10 @@ import javax.persistence.*;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Entity
-@Table(name = "products")
-public class Product extends AbstractWebPage {
-    public static final String GEN_NAME = "Gen_Product";
-    public static final String SEQ_NAME = "Seq_Product";
+@Table(name = "pages")
+public class Page extends AbstractWebPage {
+    public static final String GEN_NAME = "Gen_Page";
+    public static final String SEQ_NAME = "Seq_Page";
 
     @Id
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
@@ -25,7 +25,7 @@ public class Product extends AbstractWebPage {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "Page{" +
                 "id=" + id +
                 '}';
     }

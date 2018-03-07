@@ -1,10 +1,12 @@
 package ru.torgcrm.jee.ecommerce.repository.jpa;
 
 import com.google.common.reflect.TypeToken;
+import org.apache.log4j.Logger;
 import ru.torgcrm.jee.ecommerce.domain.GenericEntity;
 import ru.torgcrm.jee.ecommerce.repository.GenericRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -19,6 +21,7 @@ import java.util.List;
  */
 public class JpaGenericRepository<T extends GenericEntity>
         implements GenericRepository<T> {
+    private final Logger log = Logger.getLogger(JpaGenericRepository.class);
 
     @PersistenceContext
     protected EntityManager entityManager;
@@ -38,7 +41,7 @@ public class JpaGenericRepository<T extends GenericEntity>
             cQuery.select(root);
             return entityManager.createQuery(cQuery).getResultList();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            log.error("Class not found exception, while trying to make criteria query: " + e.getMessage());
         }
         return null;
     }
@@ -55,7 +58,13 @@ public class JpaGenericRepository<T extends GenericEntity>
             cQuery.select(root).where(cb.equal(root.get("id"), id));
             return entityManager.createQuery(cQuery).getSingleResult();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            log.error("Class not found exception, while trying to make criteria query: " + e.getMessage());
+        } catch (NoResultException e) {
+            try {
+                log.error("No result selected. " + getTemplateClass().getTypeName());
+            } catch (Exception ex) {
+                log.error(e.getMessage());
+            }
         }
         return null;
     }

@@ -5,13 +5,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Product DTO class {@link ru.torgcrm.jee.ecommerce.domain.Product}
+ * Abstract web page based DTO
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @NoArgsConstructor
-public class ProductDTO extends AbstractWebPageDTO {
+public abstract class AbstractWebPageDTO extends GenericDTO {
     @Getter
     @Setter
     private String title;
+    @Getter
+    @Setter
+    private String keywords;
+    @Getter
+    @Setter
+    private String description;
 }

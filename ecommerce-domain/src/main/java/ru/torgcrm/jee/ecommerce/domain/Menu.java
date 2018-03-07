@@ -7,6 +7,8 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
+ * Website menu, for example top menu, footer menu, etc...
+ *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Entity

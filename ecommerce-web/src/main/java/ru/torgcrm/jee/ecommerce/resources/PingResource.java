@@ -4,7 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 /**
- * Ping resource
+ * Ping resource, check application health
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
