@@ -23,10 +23,12 @@ public class JpaGenericRepository<T extends GenericEntity>
     @PersistenceContext
     protected EntityManager entityManager;
 
-    private final TypeToken<T> typeToken = new TypeToken<T>(getClass()) {
-    };
+    private final TypeToken<T> typeToken = new TypeToken<T>(getClass()) {};
     private final Type type = typeToken.getType();
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<T> findAll() {
         try {
@@ -41,6 +43,9 @@ public class JpaGenericRepository<T extends GenericEntity>
         return null;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public T findById(Long id) {
         try {
@@ -55,6 +60,9 @@ public class JpaGenericRepository<T extends GenericEntity>
         return null;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public T save(T entity) {
         entityManager.persist(entity);
@@ -62,16 +70,25 @@ public class JpaGenericRepository<T extends GenericEntity>
         return entity;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void delete(T entity) {
         entityManager.remove(entity);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void delete(Long id) {
         entityManager.remove(findById(id));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     private Class getTemplateClass() throws ClassNotFoundException {
         return Class.forName(type.getTypeName());
     }

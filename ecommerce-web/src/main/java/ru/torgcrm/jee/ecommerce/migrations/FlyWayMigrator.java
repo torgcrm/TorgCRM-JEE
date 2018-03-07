@@ -1,6 +1,8 @@
 package ru.torgcrm.jee.ecommerce.migrations;
 
+import org.apache.log4j.Logger;
 import org.flywaydb.core.Flyway;
+import org.flywaydb.core.api.FlywayException;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -17,14 +19,20 @@ import javax.sql.DataSource;
 @Startup
 public class FlyWayMigrator {
 
+    Logger log = Logger.getLogger(getClass().getName());
+
     @Resource(lookup = "jdbc/TorgCRM_Main")
     private DataSource dataSource;
 
     @PostConstruct
     private void onStartUp() {
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(dataSource);
-        flyway.setSchemas("torgcrm");
-        flyway.migrate();
+        try {
+            Flyway flyway = new Flyway();
+            flyway.setDataSource(dataSource);
+            flyway.setSchemas("torgcrm");
+            flyway.migrate();
+        } catch (FlywayException e) {
+            log.error("Can't migrate database script: " + e.getMessage());
+        }
     }
 }
