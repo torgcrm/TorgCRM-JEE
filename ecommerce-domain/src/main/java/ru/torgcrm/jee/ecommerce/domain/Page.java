@@ -10,8 +10,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "pages")
 public class Page extends AbstractWebPage {
-    public static final String GEN_NAME = "Gen_Page";
-    public static final String SEQ_NAME = "Seq_Page";
+    public static final String GEN_NAME = "Gen_Pages";
+    public static final String SEQ_NAME = "Seq_Pages";
 
     @Id
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)

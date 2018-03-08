@@ -13,9 +13,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "menu_items")
-public class MenuItem extends GenericEntity {
-    public static final String GEN_NAME = "Gen_Menu_Item";
-    public static final String SEQ_NAME = "Seq_Menu_Item";
+public class MenuItem extends AbstractProjectEntity {
+    public static final String GEN_NAME = "Gen_Menu_Items";
+    public static final String SEQ_NAME = "Seq_Menu_Items";
 
     @Id
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)

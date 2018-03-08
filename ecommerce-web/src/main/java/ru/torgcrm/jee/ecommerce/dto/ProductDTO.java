@@ -10,7 +10,7 @@ import lombok.Setter;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @NoArgsConstructor
-public class ProductDTO extends AbstractWebPageDTO {
+public class ProductDTO extends AbstractProjectDTO {
     @Getter
     @Setter
     private String title;

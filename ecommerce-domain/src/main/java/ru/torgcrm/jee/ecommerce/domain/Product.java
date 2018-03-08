@@ -9,9 +9,12 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "products")
+@NamedQuery(name = Product.FIND_BY_PROJECT,
+        query = "SELECT p FROM Product p WHERE p.project.id=:projectId")
 public class Product extends AbstractWebPage {
-    public static final String GEN_NAME = "Gen_Product";
-    public static final String SEQ_NAME = "Seq_Product";
+    public static final String GEN_NAME = "Gen_Products";
+    public static final String SEQ_NAME = "Seq_Products";
+    public static final String FIND_BY_PROJECT = "FIND_BY_PROJECT";
 
     @Id
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)

@@ -5,18 +5,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Abstract web page based DTO
+ * DTO for Project
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @NoArgsConstructor
-public abstract class AbstractWebPageDTO extends AbstractProjectDTO {
+public class ProjectDTO extends GenericDTO {
     @Getter
     @Setter
     private String title;
     @Getter
     @Setter
-    private String keywords;
+    private String code;
+    @Getter
+    @Setter
+    private String host;
     @Getter
     @Setter
     private String description;

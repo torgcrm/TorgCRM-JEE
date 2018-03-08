@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @NoArgsConstructor
-public class PageDTO extends AbstractWebPageDTO {
+public class PageDTO extends AbstractProjectDTO {
 }

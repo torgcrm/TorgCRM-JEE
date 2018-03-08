@@ -14,4 +14,6 @@ public interface IProductService {
     List<ProductDTO> findAll();
 
     ProductDTO findById(Long id);
+
+    List<ProductDTO> findAllByProject(Long projectId);
 }

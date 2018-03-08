@@ -4,9 +4,13 @@
         xmlns="http://xmlns.jcp.org/xml/ns/persistence"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-    <persistence-unit name="CargoTrackerUnit">
+    <persistence-unit name="TorgCRMUnit">
         <jta-data-source>jdbc/TorgCRM_Main</jta-data-source>
 
+        <class>ru.torgcrm.jee.ecommerce.domain.Project</class>
         <class>ru.torgcrm.jee.ecommerce.domain.Product</class>
+        <class>ru.torgcrm.jee.ecommerce.domain.Menu</class>
+        <class>ru.torgcrm.jee.ecommerce.domain.MenuItem</class>
+        <class>ru.torgcrm.jee.ecommerce.domain.Page</class>
     </persistence-unit>
 </persistence>

@@ -39,4 +39,13 @@ public class ProductService implements IProductService {
         }
         return null;
     }
+
+    @Override
+    public List<ProductDTO> findAllByProject(Long projectId) {
+        List<Product> products = productRepository.findAllByProject(projectId);
+        if (products != null) {
+            return productMapper.toDto(products);
+        }
+        return null;
+    }
 }

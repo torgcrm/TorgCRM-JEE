@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Path("/products")
 @Stateless
-public class ProductsResource {
+public class ProductsResource extends AbstractResource {
 
     @Inject
     private IProductService productService;
@@ -26,9 +26,7 @@ public class ProductsResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProductDTO> getProducts() {
-        List<ProductDTO> products = productService.findAll();
-        ProductDTO product = productService.findById(1L);
-        products.add(product);
+        List<ProductDTO> products = productService.findAllByProject(getCurrentProjectId());
         return products;
     }
 }

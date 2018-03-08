@@ -1,6 +1,7 @@
 package ru.torgcrm.jee.ecommerce.repository.jpa;
 
 import ru.torgcrm.jee.ecommerce.domain.Menu;
+import ru.torgcrm.jee.ecommerce.repository.MenuRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -10,5 +11,6 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @ApplicationScoped
-public class JpaMenuRepository extends JpaGenericRepository<Menu> {
+public class JpaMenuRepository extends JpaGenericRepository<Menu>
+        implements MenuRepository {
 }

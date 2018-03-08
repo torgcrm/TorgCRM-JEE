@@ -12,7 +12,7 @@ import javax.persistence.MappedSuperclass;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @MappedSuperclass
-public abstract class AbstractWebPage extends GenericEntity {
+public abstract class AbstractWebPage extends AbstractProjectEntity {
     @Getter
     @Setter
     private String title;
@@ -22,4 +22,13 @@ public abstract class AbstractWebPage extends GenericEntity {
     @Getter
     @Setter
     private String description;
+
+    @Override
+    public String toString() {
+        return "AbstractWebPage{" +
+                "title='" + title + '\'' +
+                ", keywords='" + keywords + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

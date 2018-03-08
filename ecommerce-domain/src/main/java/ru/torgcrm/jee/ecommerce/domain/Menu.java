@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "menu")
-public class Menu extends GenericEntity {
+public class Menu extends AbstractProjectEntity {
     public static final String GEN_NAME = "Gen_Menu";
     public static final String SEQ_NAME = "Seq_Menu";
 
