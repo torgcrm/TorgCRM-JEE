@@ -20,4 +20,7 @@ public abstract class AbstractWebPageDTO extends AbstractProjectDTO {
     @Getter
     @Setter
     private String description;
+    @Getter
+    @Setter
+    private String slug;
 }

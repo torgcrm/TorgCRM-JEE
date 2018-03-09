@@ -12,5 +12,6 @@
         <class>ru.torgcrm.jee.ecommerce.domain.Menu</class>
         <class>ru.torgcrm.jee.ecommerce.domain.MenuItem</class>
         <class>ru.torgcrm.jee.ecommerce.domain.Page</class>
+        <class>ru.torgcrm.jee.ecommerce.domain.Catalog</class>
     </persistence-unit>
 </persistence>

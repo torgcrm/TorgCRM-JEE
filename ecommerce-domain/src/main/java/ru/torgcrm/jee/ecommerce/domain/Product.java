@@ -1,5 +1,8 @@
 package ru.torgcrm.jee.ecommerce.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /**
@@ -9,17 +12,27 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "products")
-@NamedQuery(name = Product.FIND_BY_PROJECT,
-        query = "SELECT p FROM Product p WHERE p.project.id=:projectId")
+@NamedQueries({
+        @NamedQuery(name = Product.FIND_BY_PROJECT,
+                query = "SELECT p FROM Product p WHERE p.project.id=:projectId"),
+        @NamedQuery(name = Product.FIND_BY_SLUG_AND_PROJECT,
+                query = "SELECT p FROM Product p WHERE p.slug=:slug and p.project.id=:projectId")
+})
 public class Product extends AbstractWebPage {
     public static final String GEN_NAME = "Gen_Products";
     public static final String SEQ_NAME = "Seq_Products";
     public static final String FIND_BY_PROJECT = "FIND_BY_PROJECT";
+    public static final String FIND_BY_SLUG_AND_PROJECT = "FIND_BY_SLUG_AND_PROJECT";
 
     @Id
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
+    @Getter
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "catalog_id")
+    private Catalog catalog;
 
     @Override
     public Long getId() {

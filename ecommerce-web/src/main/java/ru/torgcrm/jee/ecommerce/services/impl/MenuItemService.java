@@ -1,4 +1,6 @@
-package ru.torgcrm.jee.ecommerce.services;
+package ru.torgcrm.jee.ecommerce.services.impl;
+
+import ru.torgcrm.jee.ecommerce.services.IMenuItemService;
 
 import javax.ejb.Stateless;
 

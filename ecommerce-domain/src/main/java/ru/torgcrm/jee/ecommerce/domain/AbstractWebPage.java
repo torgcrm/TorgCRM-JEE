@@ -22,6 +22,9 @@ public abstract class AbstractWebPage extends AbstractProjectEntity {
     @Getter
     @Setter
     private String description;
+    @Getter
+    @Setter
+    private String slug;
 
     @Override
     public String toString() {
