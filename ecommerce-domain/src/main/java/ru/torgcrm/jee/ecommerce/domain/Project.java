@@ -34,21 +34,25 @@ public class Project extends GenericEntity {
     private String host;
     @Getter
     @Setter
-    private String description;
+    @Column(name = "meta_description")
+    private String metaDescription;
+    @Getter
+    @Setter
+    @Column(name = "meta_keywords")
+    private String metaKeywords;
+    @Getter
+    @Setter
+    @Column(name = "phone_number")
+    private String phone;
+    @Getter
+    @Setter
+    @Lob
+    private String logo;
 
     @Override
     public Long getId() {
         return this.id;
     }
 
-    @Override
-    public String toString() {
-        return "Project{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", code='" + code + '\'' +
-                ", host='" + host + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
+
 }

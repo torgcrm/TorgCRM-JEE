@@ -7,5 +7,5 @@ import ru.torgcrm.jee.ecommerce.domain.Page;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface PageRepository extends GenericRepository<Page> {
+public interface PageRepository extends AbstractWebPageRepository<Page> {
 }

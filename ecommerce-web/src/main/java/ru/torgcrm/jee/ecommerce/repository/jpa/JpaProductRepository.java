@@ -5,6 +5,7 @@ import ru.torgcrm.jee.ecommerce.domain.Product;
 import ru.torgcrm.jee.ecommerce.repository.ProductRepository;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.util.List;
 
 /**
  * JPA repository for {@link Product}
@@ -12,23 +13,21 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @ApplicationScoped
-public class JpaProductRepository extends JpaGenericRepository<Product>
+public class JpaProductRepository extends JpaAbstractWebPageRepository<Product>
         implements ProductRepository {
     private final Logger log = Logger.getLogger(JpaProductRepository.class);
 
     /**
-     * Select product by product slug
+     * Find all products by catalog slug
      *
-     * @param slug slug
-     * @return {@link Product}
+     * @param slug catalog slug
+     * @return list of {@link Product}
      */
     @Override
-    public Product findBySlugAndProjectId(String slug, Long projectId) {
+    public List<Product> findAllByCatalogSlug(String slug) {
         try {
-            return entityManager.createNamedQuery(Product.FIND_BY_SLUG_AND_PROJECT, Product.class)
-                    .setParameter("slug", slug)
-                    .setParameter("projectId", projectId)
-                    .getSingleResult();
+            return entityManager.createNamedQuery(Product.FIND_BY_CATALOG_SLUG)
+                    .setParameter("catalogSlug", slug).getResultList();
         } catch (Exception e) {
             log.error("Something went wrong while trying to execute query: " + e.getMessage());
         }

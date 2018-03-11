@@ -11,6 +11,6 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @ApplicationScoped
-public class JpaPageRepository extends JpaGenericRepository<Page>
+public class JpaPageRepository extends JpaAbstractWebPageRepository<Page>
         implements PageRepository {
 }

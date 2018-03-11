@@ -8,9 +8,11 @@ import ru.torgcrm.jee.ecommerce.services.ICatalogService;
 import javax.ejb.Stateless;
 
 /**
+ * Service for {@link CatalogRepository}
+ *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Stateless
-public class CatalogService extends GenericService<CatalogDTO, CatalogRepository, CatalogMapper>
+public class CatalogServiceImpl extends GenericServiceImpl<CatalogDTO, CatalogRepository, CatalogMapper>
         implements ICatalogService {
 }

@@ -10,9 +10,11 @@ import javax.inject.Inject;
 import java.util.List;
 
 /**
+ * Generic service, contains common methods
+ *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public abstract class GenericService<
+public abstract class GenericServiceImpl<
         D extends GenericDTO,
         R extends GenericRepository,
         M extends EntityMapper> implements IGenericService<D> {

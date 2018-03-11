@@ -18,4 +18,7 @@ public class MenuItemDTO extends AbstractProjectDTO {
     @Getter
     @Setter
     private String code;
+    @Getter
+    @Setter
+    private String link;
 }

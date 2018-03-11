@@ -116,7 +116,7 @@ public class JpaGenericRepository<T extends GenericEntity>
     /**
      * {@inheritDoc}
      */
-    private Class getTemplateClass() throws ClassNotFoundException {
+    protected Class getTemplateClass() throws ClassNotFoundException {
         return Class.forName(type.getTypeName());
     }
 }

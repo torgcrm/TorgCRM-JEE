@@ -32,6 +32,9 @@ public class MenuItem extends AbstractProjectEntity {
     @Setter
     @ManyToOne(targetEntity = Menu.class)
     private Menu menu;
+    @Getter
+    @Setter
+    private String link;
 
     @Override
     public Long getId() {

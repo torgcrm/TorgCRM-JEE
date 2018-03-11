@@ -3,6 +3,7 @@ package ru.torgcrm.jee.ecommerce.domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 /**
@@ -18,10 +19,12 @@ public abstract class AbstractWebPage extends AbstractProjectEntity {
     private String title;
     @Getter
     @Setter
-    private String keywords;
+    @Column(name = "meta_keywords")
+    private String metaKeywords;
     @Getter
     @Setter
-    private String description;
+    @Column(name = "meta_description")
+    private String metaDescription;
     @Getter
     @Setter
     private String slug;
@@ -30,8 +33,9 @@ public abstract class AbstractWebPage extends AbstractProjectEntity {
     public String toString() {
         return "AbstractWebPage{" +
                 "title='" + title + '\'' +
-                ", keywords='" + keywords + '\'' +
-                ", description='" + description + '\'' +
+                ", metaKeywords='" + metaKeywords + '\'' +
+                ", metaDescription='" + metaDescription + '\'' +
+                ", slug='" + slug + '\'' +
                 '}';
     }
 }

@@ -13,9 +13,14 @@ import java.util.List;
  */
 @Entity
 @Table(name = "menu")
+@NamedQueries({
+        @NamedQuery(name = Menu.FIND_BY_PROJECT_AND_CODE,
+                query = "select m from Menu m where m.project.id=:projectId and m.code=:code")
+})
 public class Menu extends AbstractProjectEntity {
     public static final String GEN_NAME = "Gen_Menu";
     public static final String SEQ_NAME = "Seq_Menu";
+    public static final String FIND_BY_PROJECT_AND_CODE = "FIND_BY_PROJECT_AND_CODE";
 
     @Id
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)

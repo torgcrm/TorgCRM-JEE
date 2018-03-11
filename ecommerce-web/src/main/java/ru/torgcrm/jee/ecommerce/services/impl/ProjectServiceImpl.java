@@ -16,7 +16,7 @@ import java.util.List;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Stateless
-public class ProjectService implements IProjectService {
+public class ProjectServiceImpl implements IProjectService {
     @Inject
     private ProjectRepository projectRepository;
     @Inject

@@ -1,14 +1,15 @@
 package ru.torgcrm.jee.ecommerce.resources;
 
 import ru.torgcrm.jee.ecommerce.dto.MenuDTO;
-import ru.torgcrm.jee.ecommerce.dto.MenuItemDTO;
+import ru.torgcrm.jee.ecommerce.services.IMenuService;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import java.util.ArrayList;
-import java.util.List;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  * Controller for menu {@link MenuDTO}
@@ -17,20 +18,21 @@ import java.util.List;
  */
 @Path("/menu")
 @Stateless
-public class MenuResource {
+public class MenuResource extends AbstractResource {
+
+    @Inject
+    private IMenuService menuService;
+
+    /**
+     * Get menu by code
+     *
+     * @param code menu code
+     * @return {@link MenuDTO}
+     */
     @GET
     @Path("{code}")
+    @Produces(MediaType.APPLICATION_JSON)
     public MenuDTO getMenuByCode(@PathParam("code") String code) {
-        MenuDTO menu = new MenuDTO();
-        menu.setName("Top menu");
-
-        List<MenuItemDTO> items = new ArrayList<>();
-        MenuItemDTO item = new MenuItemDTO();
-        item.setName("Sample item");
-        items.add(item);
-
-        menu.setMenuItems(items);
-
-        return menu;
+        return menuService.findByProjectIdAndCode(getCurrentProjectId(), code);
     }
 }
