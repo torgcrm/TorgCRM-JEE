@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Lob;
+
 /**
  * DTO for Project
  *
@@ -22,5 +24,15 @@ public class ProjectDTO extends GenericDTO {
     private String host;
     @Getter
     @Setter
-    private String description;
+    private String metaDescription;
+    @Getter
+    @Setter
+    private String metaKeywords;
+    @Getter
+    @Setter
+    private String phone;
+    @Getter
+    @Setter
+    @Lob
+    private String logo;
 }
