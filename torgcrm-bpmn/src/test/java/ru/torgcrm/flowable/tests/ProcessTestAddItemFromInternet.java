@@ -1,19 +1,18 @@
-package org.activiti.designer.test;
+package ru.torgcrm.flowable.tests;
 
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.TaskService;
-import org.activiti.engine.form.TaskFormData;
-import org.activiti.engine.runtime.ProcessInstance;
-import org.activiti.engine.task.Task;
-import org.activiti.engine.test.ActivitiRule;
+import org.flowable.engine.RepositoryService;
+import org.flowable.engine.RuntimeService;
+import org.flowable.engine.TaskService;
+import org.flowable.engine.form.TaskFormData;
+import org.flowable.engine.runtime.ProcessInstance;
+import org.flowable.engine.test.FlowableRule;
+import org.flowable.task.api.Task;
 import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertNotNull;
@@ -24,7 +23,7 @@ public class ProcessTestAddItemFromInternet {
     private String settingUpParser = "SettingUpParser.bpmn";
 
     @Rule
-    public ActivitiRule activitiRule = new ActivitiRule();
+    public FlowableRule flowableRule = new FlowableRule();
 
     @Test
     public void startProcess() throws Exception {
@@ -32,10 +31,10 @@ public class ProcessTestAddItemFromInternet {
         File file = new File(classLoader.getResource(filename).getFile());
         File file2 = new File(classLoader.getResource(settingUpParser).getFile());
 
-        RepositoryService repositoryService = activitiRule.getRepositoryService();
+        RepositoryService repositoryService = flowableRule.getRepositoryService();
         repositoryService.createDeployment().addInputStream("AddItemFromInternet.bpmn", new FileInputStream(file)).deploy();
         repositoryService.createDeployment().addInputStream("SettingUpParser.bpmn", new FileInputStream(file2)).deploy();
-        RuntimeService runtimeService = activitiRule.getRuntimeService();
+        RuntimeService runtimeService = flowableRule.getRuntimeService();
         Map<String, Object> variableMap = new HashMap<String, Object>();
         variableMap.put("name", "Activiti");
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("AddItemFromInternet", variableMap);
@@ -43,7 +42,7 @@ public class ProcessTestAddItemFromInternet {
         System.out.println("id " + processInstance.getId() + " "
                 + processInstance.getProcessDefinitionId());
 
-        TaskService taskService = activitiRule.getProcessEngine().getTaskService();
+        TaskService taskService = flowableRule.getProcessEngine().getTaskService();
         Task task = taskService.createTaskQuery().list().get(0);
         System.out.println(task.getName());
         taskService.complete(task.getId());
@@ -55,7 +54,7 @@ public class ProcessTestAddItemFromInternet {
         taskService.complete(task.getId(), params);
 
         task = taskService.createTaskQuery().list().get(0);
-        TaskFormData taskFormData = activitiRule.getFormService().getTaskFormData(task.getId());
+        TaskFormData taskFormData = flowableRule.getFormService().getTaskFormData(task.getId());
         System.out.println(taskFormData.getFormProperties().get(0).getName());
         System.out.println(taskFormData.getFormProperties().get(0).getValue());
         System.out.println(task.getName());
