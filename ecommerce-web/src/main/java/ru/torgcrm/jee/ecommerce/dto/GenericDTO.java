@@ -1,15 +1,15 @@
 package ru.torgcrm.jee.ecommerce.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Generic DTO class
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public abstract class GenericDTO {
-    @Getter
-    @Setter
+@Data
+@EqualsAndHashCode(callSuper = false)
+public abstract class GenericDTO extends Object {
     private Long id;
 }

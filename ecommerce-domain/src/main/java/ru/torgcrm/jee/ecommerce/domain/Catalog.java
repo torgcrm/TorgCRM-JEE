@@ -1,7 +1,7 @@
 package ru.torgcrm.jee.ecommerce.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +11,8 @@ import java.util.List;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "catalog")
 public class Catalog extends AbstractWebPage {
@@ -21,8 +23,6 @@ public class Catalog extends AbstractWebPage {
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
-    @Getter
-    @Setter
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "catalog")
     private List<Product> products;
 

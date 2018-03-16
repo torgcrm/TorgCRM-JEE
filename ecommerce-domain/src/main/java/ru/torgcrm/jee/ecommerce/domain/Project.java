@@ -1,7 +1,7 @@
 package ru.torgcrm.jee.ecommerce.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
@@ -10,6 +10,8 @@ import javax.persistence.*;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "projects")
 @NamedQuery(name = Project.FIND_PROJECT_BY_HOST,
@@ -23,29 +25,15 @@ public class Project extends GenericEntity {
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
-    @Getter
-    @Setter
     private String title;
-    @Getter
-    @Setter
     private String code;
-    @Getter
-    @Setter
     private String host;
-    @Getter
-    @Setter
     @Column(name = "meta_description")
     private String metaDescription;
-    @Getter
-    @Setter
     @Column(name = "meta_keywords")
     private String metaKeywords;
-    @Getter
-    @Setter
     @Column(name = "phone_number")
     private String phone;
-    @Getter
-    @Setter
     @Lob
     private String logo;
 

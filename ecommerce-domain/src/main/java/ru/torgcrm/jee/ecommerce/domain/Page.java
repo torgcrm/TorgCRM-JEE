@@ -1,5 +1,8 @@
 package ru.torgcrm.jee.ecommerce.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 
 /**
@@ -7,6 +10,8 @@ import javax.persistence.*;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "pages")
 public class Page extends AbstractWebPage {

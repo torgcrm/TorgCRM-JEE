@@ -78,6 +78,12 @@
                 <artifactId>flowable-form-model</artifactId>
                 <version>6.2.1</version>
             </dependency>
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-cdi</artifactId>
+                <version>6.2.1</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>log4j</groupId>

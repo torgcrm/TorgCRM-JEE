@@ -1,7 +1,7 @@
 package ru.torgcrm.jee.ecommerce.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -12,21 +12,15 @@ import javax.persistence.MappedSuperclass;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 @MappedSuperclass
 public abstract class AbstractWebPage extends AbstractProjectEntity {
-    @Getter
-    @Setter
     private String title;
-    @Getter
-    @Setter
     @Column(name = "meta_keywords")
     private String metaKeywords;
-    @Getter
-    @Setter
     @Column(name = "meta_description")
     private String metaDescription;
-    @Getter
-    @Setter
     private String slug;
 
     @Override

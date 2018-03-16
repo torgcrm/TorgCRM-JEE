@@ -1,7 +1,7 @@
 package ru.torgcrm.jee.ecommerce.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
@@ -10,6 +10,8 @@ import javax.persistence.*;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "products")
 @NamedQueries({
@@ -31,35 +33,19 @@ public class Product extends AbstractWebPage {
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
-    @Getter
-    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "catalog_id")
     private Catalog catalog;
-    @Getter
-    @Setter
     @Column(name = "view_name")
     private String viewName;
-    @Getter
-    @Setter
     @Column(name = "short_desc")
     private String shortDesc;
-    @Getter
-    @Setter
     private String article;
-    @Getter
-    @Setter
     private Double price;
-    @Getter
-    @Setter
     @Column(name = "old_price")
     private Double oldPrice;
-    @Getter
-    @Setter
     @Column(name = "seo_text")
     private String seoText;
-    @Getter
-    @Setter
     @Column(name = "in_stock")
     private Boolean inStock;
 

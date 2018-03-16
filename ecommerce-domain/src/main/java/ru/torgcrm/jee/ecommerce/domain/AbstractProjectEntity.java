@@ -1,7 +1,7 @@
 package ru.torgcrm.jee.ecommerce.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -13,10 +13,10 @@ import javax.persistence.MappedSuperclass;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 @MappedSuperclass
 public abstract class AbstractProjectEntity extends GenericEntity {
-    @Getter
-    @Setter
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
     private Project project;

@@ -1,8 +1,8 @@
 package ru.torgcrm.jee.ecommerce.dto;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -12,15 +12,11 @@ import java.util.List;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 public class MenuDTO extends AbstractProjectDTO {
-    @Getter
-    @Setter
     private String name;
-    @Getter
-    @Setter
     private String code;
-    @Getter
-    @Setter
     List<MenuItemDTO> menuItems;
 }

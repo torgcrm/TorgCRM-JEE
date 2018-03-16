@@ -5,12 +5,14 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * Page DTO, see {@link ru.torgcrm.jee.ecommerce.domain.Page}
+ * DTO for orders
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-public class PageDTO extends AbstractWebPageDTO {
+public class OrderDTO {
+    private String phone;
+    private Long productId;
 }
