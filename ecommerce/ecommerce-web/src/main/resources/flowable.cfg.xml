@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- lookup the JTA-Transaction manager -->
+    <bean id="transactionManager" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:appserver/TransactionManager"></property>
+        <property name="resourceRef" value="true" />
+    </bean>
+
+    <!-- process engine configuration -->
+    <bean id="processEngineConfiguration"
+          class="org.flowable.cdi.CdiJtaProcessEngineConfiguration">
+        <property name="dataSourceJndiName" value="jdbc/TorgCRM_BPMN" />
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="transactionsExternallyManaged" value="true" />
+        <property name="databaseSchemaUpdate" value="true" />
+    </bean>
+
+    <!-- flowable forms -->
+    <bean id="formEngineConfiguration" class="org.flowable.form.engine.impl.cfg.StandaloneFormEngineConfiguration">
+        <property name="dataSourceJndiName" value="jdbc/TorgCRM_BPMN" />
+    </bean>
+
+    <bean id="formEngineConfigurator" class="org.flowable.form.engine.configurator.FormEngineConfigurator">
+        <property name="formEngineConfiguration" ref="formEngineConfiguration" />
+    </bean>
+</beans>

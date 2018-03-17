@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://torgcrm.ru/ecommerce">
+  <process id="newOrder" name="Новый заказ" isExecutable="true">
+    <startEvent id="newOrderStart" name="Start"></startEvent>
+    <userTask id="callClient" name="Звонок клиенту">
+      <documentation>Звонок клиенту, уточнение заказа и дополнительных данных</documentation>
+      <extensionElements>
+        <activiti:formProperty id="firstName" name="Имя клиента" type="string"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="startFlow" sourceRef="newOrderStart" targetRef="callClient"></sequenceFlow>
+    <userTask id="buildOrder" name="Сборка заказа"></userTask>
+    <sequenceFlow id="callSuccessFlow" sourceRef="callClient" targetRef="buildOrder"></sequenceFlow>
+    <endEvent id="sucessEnd" name="Заказ успешно доставлен"></endEvent>
+    <sequenceFlow id="callFailFlow" sourceRef="callClient" targetRef="sucessEnd"></sequenceFlow>
+    <userTask id="delivery" name="Доставка заказа"></userTask>
+    <sequenceFlow id="buildSuccessFlow" sourceRef="buildOrder" targetRef="delivery"></sequenceFlow>
+    <userTask id="checkDelivery" name="Проверка качества обслуживания"></userTask>
+    <sequenceFlow id="deliverySuccessFlow" sourceRef="delivery" targetRef="checkDelivery"></sequenceFlow>
+    <userTask id="returnOrder" name="Возврат заказа"></userTask>
+    <sequenceFlow id="checkDeliverySuccessFlow" name="Ok" sourceRef="checkDelivery" targetRef="returnOrder"></sequenceFlow>
+    <endEvent id="failEnd"></endEvent>
+    <sequenceFlow id="checkQualityFailFlow" sourceRef="checkDelivery" targetRef="failEnd"></sequenceFlow>
+    <sequenceFlow id="checkQualitySuccess" sourceRef="checkDelivery" targetRef="sucessEnd"></sequenceFlow>
+    <sequenceFlow id="returnDeliveryEndFlow" sourceRef="returnOrder" targetRef="failEnd"></sequenceFlow>
+    <sequenceFlow id="deliveryFailFlow" sourceRef="delivery" targetRef="failEnd"></sequenceFlow>
+    <userTask id="reBuild" name="Сборка заказа не удалась"></userTask>
+    <sequenceFlow id="rebuildFailFlow" sourceRef="reBuild" targetRef="failEnd"></sequenceFlow>
+    <sequenceFlow id="buildFailFlow" sourceRef="buildOrder" targetRef="reBuild"></sequenceFlow>
+    <sequenceFlow id="reBuildSuccessFlow" sourceRef="reBuild" targetRef="delivery"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_newOrder">
+    <bpmndi:BPMNPlane bpmnElement="newOrder" id="BPMNPlane_newOrder">
+      <bpmndi:BPMNShape bpmnElement="newOrderStart" id="BPMNShape_newOrderStart">
+        <omgdc:Bounds height="35.0" width="35.0" x="205.0" y="31.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="callClient" id="BPMNShape_callClient">
+        <omgdc:Bounds height="61.0" width="105.0" x="170.0" y="160.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="buildOrder" id="BPMNShape_buildOrder">
+        <omgdc:Bounds height="55.0" width="105.0" x="320.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sucessEnd" id="BPMNShape_sucessEnd">
+        <omgdc:Bounds height="35.0" width="35.0" x="205.0" y="320.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="delivery" id="BPMNShape_delivery">
+        <omgdc:Bounds height="55.0" width="105.0" x="470.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="checkDelivery" id="BPMNShape_checkDelivery">
+        <omgdc:Bounds height="61.0" width="105.0" x="470.0" y="307.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="returnOrder" id="BPMNShape_returnOrder">
+        <omgdc:Bounds height="55.0" width="105.0" x="470.0" y="411.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="failEnd" id="BPMNShape_failEnd">
+        <omgdc:Bounds height="35.0" width="35.0" x="720.0" y="320.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="reBuild" id="BPMNShape_reBuild">
+        <omgdc:Bounds height="60.0" width="105.0" x="685.0" y="31.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="startFlow" id="BPMNEdge_startFlow">
+        <omgdi:waypoint x="222.0" y="66.0"></omgdi:waypoint>
+        <omgdi:waypoint x="222.0" y="160.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="callSuccessFlow" id="BPMNEdge_callSuccessFlow">
+        <omgdi:waypoint x="275.0" y="190.0"></omgdi:waypoint>
+        <omgdi:waypoint x="320.0" y="190.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="callFailFlow" id="BPMNEdge_callFailFlow">
+        <omgdi:waypoint x="222.0" y="221.0"></omgdi:waypoint>
+        <omgdi:waypoint x="222.0" y="320.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="buildSuccessFlow" id="BPMNEdge_buildSuccessFlow">
+        <omgdi:waypoint x="425.0" y="190.0"></omgdi:waypoint>
+        <omgdi:waypoint x="470.0" y="190.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="deliverySuccessFlow" id="BPMNEdge_deliverySuccessFlow">
+        <omgdi:waypoint x="522.0" y="218.0"></omgdi:waypoint>
+        <omgdi:waypoint x="522.0" y="307.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="checkDeliverySuccessFlow" id="BPMNEdge_checkDeliverySuccessFlow">
+        <omgdi:waypoint x="522.0" y="368.0"></omgdi:waypoint>
+        <omgdi:waypoint x="522.0" y="411.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="13.0" width="15.0" x="522.0" y="368.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="checkQualityFailFlow" id="BPMNEdge_checkQualityFailFlow">
+        <omgdi:waypoint x="575.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="337.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="checkQualitySuccess" id="BPMNEdge_checkQualitySuccess">
+        <omgdi:waypoint x="470.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="240.0" y="337.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="returnDeliveryEndFlow" id="BPMNEdge_returnDeliveryEndFlow">
+        <omgdi:waypoint x="522.0" y="411.0"></omgdi:waypoint>
+        <omgdi:waypoint x="737.0" y="355.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="deliveryFailFlow" id="BPMNEdge_deliveryFailFlow">
+        <omgdi:waypoint x="522.0" y="218.0"></omgdi:waypoint>
+        <omgdi:waypoint x="737.0" y="320.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="rebuildFailFlow" id="BPMNEdge_rebuildFailFlow">
+        <omgdi:waypoint x="737.0" y="91.0"></omgdi:waypoint>
+        <omgdi:waypoint x="737.0" y="320.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="buildFailFlow" id="BPMNEdge_buildFailFlow">
+        <omgdi:waypoint x="372.0" y="163.0"></omgdi:waypoint>
+        <omgdi:waypoint x="372.0" y="61.0"></omgdi:waypoint>
+        <omgdi:waypoint x="685.0" y="61.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="reBuildSuccessFlow" id="BPMNEdge_reBuildSuccessFlow">
+        <omgdi:waypoint x="737.0" y="91.0"></omgdi:waypoint>
+        <omgdi:waypoint x="522.0" y="163.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

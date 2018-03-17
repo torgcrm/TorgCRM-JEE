@@ -83,6 +83,12 @@
                 <artifactId>flowable-cdi</artifactId>
                 <version>6.2.1</version>
             </dependency>
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-form-engine-configurator</artifactId>
+                <version>6.2.1</version>
+            </dependency>
+
 
 
             <dependency>
@@ -167,12 +173,8 @@
     </build>
 
     <modules>
-        <module>ecommerce-bpmn</module>
-        <module>ecommerce-domain</module>
-        <module>ecommerce-web</module>
-        <module>torgcrm-bpmn</module>
-        <module>torgcrm-web</module>
-        <module>torgcrm-crawler-domain</module>
-        <module>torgcrm-crawler</module>
+        <module>ecommerce</module>
+        <module>torgcrm</module>
+        <module>crawler</module>
     </modules>
 </project>
