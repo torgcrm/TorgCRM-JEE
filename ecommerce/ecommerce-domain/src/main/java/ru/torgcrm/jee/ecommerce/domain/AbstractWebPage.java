@@ -22,14 +22,6 @@ public abstract class AbstractWebPage extends AbstractProjectEntity {
     @Column(name = "meta_description")
     private String metaDescription;
     private String slug;
-
-    @Override
-    public String toString() {
-        return "AbstractWebPage{" +
-                "title='" + title + '\'' +
-                ", metaKeywords='" + metaKeywords + '\'' +
-                ", metaDescription='" + metaDescription + '\'' +
-                ", slug='" + slug + '\'' +
-                '}';
-    }
+    @Column(name = "seo_text")
+    private String seoText;
 }

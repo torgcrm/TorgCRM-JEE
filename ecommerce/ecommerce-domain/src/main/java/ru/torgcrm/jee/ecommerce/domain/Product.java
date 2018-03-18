@@ -44,20 +44,11 @@ public class Product extends AbstractWebPage {
     private Double price;
     @Column(name = "old_price")
     private Double oldPrice;
-    @Column(name = "seo_text")
-    private String seoText;
     @Column(name = "in_stock")
     private Boolean inStock;
 
     @Override
     public Long getId() {
         return this.id;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                '}';
     }
 }

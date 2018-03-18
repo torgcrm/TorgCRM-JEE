@@ -35,14 +35,4 @@ public class MenuItem extends AbstractProjectEntity {
     public Long getId() {
         return this.id;
     }
-
-    @Override
-    public String toString() {
-        return "MenuItem{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", code='" + code + '\'' +
-                ", menu=" + menu +
-                '}';
-    }
 }

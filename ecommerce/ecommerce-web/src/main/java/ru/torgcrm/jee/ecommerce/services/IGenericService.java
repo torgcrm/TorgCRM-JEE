@@ -32,4 +32,11 @@ public interface IGenericService<D extends GenericDTO> {
      * @return {@link GenericDTO}
      */
     List<D> findAllByProjectId(Long projectId);
+
+    /**
+     * Save entity to database
+     *
+     * @param entity DTO
+     */
+    void save(D entity);
 }

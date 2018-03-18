@@ -20,11 +20,4 @@ public abstract class AbstractProjectEntity extends GenericEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
     private Project project;
-
-    @Override
-    public String toString() {
-        return "AbstractProjectEntity{" +
-                "project=" + project +
-                '}';
-    }
 }

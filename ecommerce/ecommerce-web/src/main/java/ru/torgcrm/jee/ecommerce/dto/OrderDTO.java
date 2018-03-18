@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * DTO for orders
  *
@@ -12,7 +14,9 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-public class OrderDTO {
+public class OrderDTO extends AbstractProjectDTO {
     private String phone;
+    private String processId;
     private Long productId;
+    private List<ProductDTO> products;
 }

@@ -93,7 +93,6 @@ public class JpaGenericRepository<T extends GenericEntity>
     @Override
     public T save(T entity) {
         entityManager.persist(entity);
-        entityManager.refresh(entity);
         return entity;
     }
 

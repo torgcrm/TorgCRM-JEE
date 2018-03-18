@@ -21,18 +21,4 @@ public class ProductDTO extends AbstractWebPageDTO {
     private Double oldPrice;
     private String seoText;
     private Boolean inStock;
-
-    @Override
-    public String toString() {
-        return "ProductDTO{" +
-                "catalog=" + catalog +
-                ", viewName='" + viewName + '\'' +
-                ", shortDesc='" + shortDesc + '\'' +
-                ", article='" + article + '\'' +
-                ", price=" + price +
-                ", oldPrice=" + oldPrice +
-                ", seoText='" + seoText + '\'' +
-                ", inStock=" + inStock +
-                '}';
-    }
 }

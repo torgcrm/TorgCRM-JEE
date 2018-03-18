@@ -22,7 +22,7 @@ public class Order extends AbstractProjectEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
     @Column(name = "process_id")
-    private Long processId;
+    private String processId;
     @OneToMany
     @JoinTable(name = "orders_products",
             joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
@@ -33,5 +33,4 @@ public class Order extends AbstractProjectEntity {
     public Long getId() {
         return id;
     }
-
 }

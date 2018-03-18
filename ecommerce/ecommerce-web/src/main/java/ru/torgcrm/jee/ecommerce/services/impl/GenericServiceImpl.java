@@ -60,6 +60,13 @@ public abstract class GenericServiceImpl<
         return null;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public void save(D dto) {
+        repository.save(mapper.toEntity(dto));
+    }
+
     protected R getRepository() {
         return repository;
     }

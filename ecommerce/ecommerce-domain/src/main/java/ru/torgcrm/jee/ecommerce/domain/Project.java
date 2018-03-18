@@ -41,6 +41,4 @@ public class Project extends GenericEntity {
     public Long getId() {
         return this.id;
     }
-
-
 }
