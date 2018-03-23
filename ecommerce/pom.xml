@@ -16,6 +16,7 @@
     <modules>
         <module>ecommerce-bpmn</module>
         <module>ecommerce-domain</module>
+        <module>ecommerce-services</module>
         <module>ecommerce-web</module>
     </modules>
 </project>

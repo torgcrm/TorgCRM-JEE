@@ -34,4 +34,8 @@ public abstract class AbstractResource {
             return 0L;
         return getCurrentProject().getId();
     }
+
+    protected String getOkStatus() {
+        return "{status: 'ok'}";
+    }
 }
