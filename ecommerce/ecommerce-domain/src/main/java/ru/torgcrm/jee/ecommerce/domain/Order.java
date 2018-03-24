@@ -29,6 +29,7 @@ public class Order extends AbstractProjectEntity {
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
     )
     private List<Product> products;
+    private String phone;
 
     public Long getId() {
         return id;
