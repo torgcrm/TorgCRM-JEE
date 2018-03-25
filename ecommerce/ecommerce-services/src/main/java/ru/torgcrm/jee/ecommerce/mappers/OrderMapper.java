@@ -10,3 +10,4 @@ import ru.torgcrm.jee.ecommerce.dto.OrderDTO;
 @Mapper(componentModel = "cdi")
 public interface OrderMapper extends EntityMapper<OrderDTO, Order> {
 }
+

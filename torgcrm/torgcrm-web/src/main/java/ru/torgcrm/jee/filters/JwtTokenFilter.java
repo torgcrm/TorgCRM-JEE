@@ -28,12 +28,16 @@ public class JwtTokenFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
         String authorizationHeader = containerRequestContext
                 .getHeaderString(HttpHeaders.AUTHORIZATION);
-        String token = authorizationHeader.substring("Bearer".length()).trim();
-        try {
-            Key key = generateKey();
-            Jwts.parser().setSigningKey(key).parseClaimsJws(token);
-        } catch (Exception e) {
-            log.log(Level.ERROR, "#### invalid token : " + token);
+        if (authorizationHeader != null) {
+            String token = authorizationHeader.substring("Bearer".length()).trim();
+            try {
+                Key key = generateKey();
+                Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+            } catch (Exception e) {
+                log.log(Level.ERROR, "#### invalid token : " + token);
+                containerRequestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
+            }
+        } else {
             containerRequestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }
     }
