@@ -6,8 +6,8 @@ import ru.torgcrm.jee.security.Secured;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
@@ -15,6 +15,8 @@ import java.util.List;
  */
 @Path("/orders")
 @Stateless
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class CRMOrderResource {
 
     @Inject
@@ -24,5 +26,16 @@ public class CRMOrderResource {
     @Secured
     public List<OrderDTO> getAll() {
         return orderService.findAll();
+    }
+
+    @DELETE
+    @Path("/delete/{id}")
+    public String deleteOrder(@PathParam("id") Long orderId) {
+        orderService.delete(orderId);
+        return getOkStatus();
+    }
+
+    protected String getOkStatus() {
+        return "{status: 'ok'}";
     }
 }

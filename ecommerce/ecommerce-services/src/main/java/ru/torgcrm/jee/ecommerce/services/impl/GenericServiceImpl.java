@@ -67,6 +67,13 @@ public abstract class GenericServiceImpl<
         repository.save(mapper.toEntity(dto));
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public void delete(Long id) {
+        repository.delete(id);
+    }
+
     protected R getRepository() {
         return repository;
     }

@@ -22,6 +22,8 @@ import java.util.List;
  */
 @Path("/orders")
 @Stateless
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class OrderResource extends AbstractResource {
 
     @Inject
@@ -33,8 +35,6 @@ public class OrderResource extends AbstractResource {
 
     @POST
     @Path("/one-click")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public String createOneClickOrder(OrderDTO order) {
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("newOrder");
