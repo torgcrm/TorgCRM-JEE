@@ -19,4 +19,5 @@ public class OrderDTO extends AbstractProjectDTO {
     private String processId;
     private Long productId;
     private List<ProductDTO> products;
+    private String comment;
 }

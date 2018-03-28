@@ -35,6 +35,13 @@ public class CRMOrderResource {
         return getOkStatus();
     }
 
+    @POST
+    @Path("/new")
+    public String saveOrder(OrderDTO orderDTO) {
+        orderService.save(orderDTO);
+        return getOkStatus();
+    }
+
     protected String getOkStatus() {
         return "{status: 'ok'}";
     }
