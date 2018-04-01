@@ -30,6 +30,7 @@ public class Order extends AbstractProjectEntity {
     )
     private List<Product> products;
     private String phone;
+    private String comment;
 
     public Long getId() {
         return id;
