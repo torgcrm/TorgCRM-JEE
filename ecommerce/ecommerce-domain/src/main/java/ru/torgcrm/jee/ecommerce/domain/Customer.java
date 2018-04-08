@@ -32,6 +32,8 @@ public class Customer extends AbstractProjectEntity {
     private Date birthDate;
     @Column(name = "comments")
     private String comments;
+    @Column(name = "full_name")
+    private String fullName;
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "orders_customers",
             joinColumns = {@JoinColumn(name = "customer_id", referencedColumnName = "id")},

@@ -21,4 +21,5 @@ public class CustomerDTO extends AbstractProjectDTO {
     private String secondName;
     private Date birthDate;
     private String comments;
+    private String fullName;
 }
