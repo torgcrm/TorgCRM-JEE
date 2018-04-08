@@ -44,15 +44,14 @@ public class CRMOrderResource extends AbstractResource {
 
     @DELETE
     @Secured
-    @Path("/delete/{id}")
+    @Path("/{id}")
     public String deleteOrder(@PathParam("id") Long orderId) {
         orderService.delete(orderId);
         return getOkStatus();
     }
 
-    @POST
+    @PUT
     @Secured
-    @Path("/new")
     @Transactional
     public String saveOrder(OrderDTO order) {
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("newOrder");
@@ -60,14 +59,10 @@ public class CRMOrderResource extends AbstractResource {
         ProductDTO product = productService.findById(1L);
         List<ProductDTO> products = new ArrayList<>();
         products.add(product);
-//        order.setProducts(products);
-//        order.setProject(projectService.findOneByHost("domain.ru"));
+        order.setProducts(products);
+        order.setProject(projectService.findOneByHost("domain.ru"));
 
         orderService.save(order);
         return getOkStatus();
-    }
-
-    protected String getOkStatus() {
-        return "{status: 'ok'}";
     }
 }

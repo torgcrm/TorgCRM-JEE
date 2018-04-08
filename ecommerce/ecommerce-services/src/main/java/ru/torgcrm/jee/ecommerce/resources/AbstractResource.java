@@ -36,6 +36,6 @@ public abstract class AbstractResource {
     }
 
     protected String getOkStatus() {
-        return "{status: 'ok'}";
+        return "{\"status\":\"ok\"}";
     }
 }

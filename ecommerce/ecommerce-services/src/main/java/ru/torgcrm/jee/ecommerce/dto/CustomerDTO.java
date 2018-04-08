@@ -4,21 +4,21 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 /**
- * DTO for orders
+ * DTO for customer
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-public class OrderDTO extends AbstractProjectDTO {
-    private String phone;
-    private String processId;
-    private Long productId;
-    private List<ProductDTO> products;
-    private String comment;
-    private CustomerDTO customer;
+public class CustomerDTO extends AbstractProjectDTO {
+    private String firstName;
+    private String lastName;
+    private String secondName;
+    private Date birthDate;
+    private String comments;
 }

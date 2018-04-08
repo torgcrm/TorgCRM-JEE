@@ -31,6 +31,12 @@ public class Order extends AbstractProjectEntity {
     private List<Product> products;
     private String phone;
     private String comment;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "orders_customers",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    )
+    private Customer customer;
 
     public Long getId() {
         return id;
