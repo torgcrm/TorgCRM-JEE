@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class RawDataDTO extends GenericDTO {
+    private byte[] data;
 }

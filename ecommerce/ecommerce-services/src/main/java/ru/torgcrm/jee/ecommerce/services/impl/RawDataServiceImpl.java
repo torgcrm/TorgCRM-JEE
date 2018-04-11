@@ -3,6 +3,7 @@ package ru.torgcrm.jee.ecommerce.services.impl;
 import ru.torgcrm.jee.ecommerce.dto.RawDataDTO;
 import ru.torgcrm.jee.ecommerce.mappers.RawDataMapper;
 import ru.torgcrm.jee.ecommerce.repository.RawDataRepository;
+import ru.torgcrm.jee.ecommerce.services.IRawDataService;
 
 import javax.ejb.Stateless;
 
@@ -10,6 +11,6 @@ import javax.ejb.Stateless;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Stateless
-public class RawDataServiceImpl extends
-        GenericServiceImpl<RawDataDTO, RawDataRepository, RawDataMapper> {
+public class RawDataServiceImpl extends GenericServiceImpl<RawDataDTO, RawDataRepository, RawDataMapper>
+        implements IRawDataService {
 }

@@ -18,4 +18,6 @@ public class RawData extends GenericEntity {
     @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
+    @Lob
+    private byte[] data;
 }
