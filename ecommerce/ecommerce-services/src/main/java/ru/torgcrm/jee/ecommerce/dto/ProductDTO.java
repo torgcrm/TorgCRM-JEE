@@ -3,6 +3,9 @@ package ru.torgcrm.jee.ecommerce.dto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import ru.torgcrm.jee.ecommerce.domain.RawData;
+
+import java.util.List;
 
 /**
  * Product DTO class {@link ru.torgcrm.jee.ecommerce.domain.Product}
@@ -21,4 +24,7 @@ public class ProductDTO extends AbstractWebPageDTO {
     private Double oldPrice;
     private String seoText;
     private Boolean inStock;
+    private List<RawDataDTO> rawData;
+    private List<Long> images;
+    private Boolean draft;
 }

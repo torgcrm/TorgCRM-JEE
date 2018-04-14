@@ -19,5 +19,6 @@ public class RawData extends GenericEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     private byte[] data;
 }

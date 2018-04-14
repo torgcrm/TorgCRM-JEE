@@ -56,10 +56,12 @@ public class CRMOrderResource extends AbstractResource {
     public String saveOrder(OrderDTO order) {
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("newOrder");
         order.setProcessId(processInstance.getProcessDefinitionId());
-        ProductDTO product = productService.findById(1L);
-        List<ProductDTO> products = new ArrayList<>();
-        products.add(product);
-        order.setProducts(products);
+        ProductDTO product = productService.findById(28L);
+        if(product != null) {
+            List<ProductDTO> products = new ArrayList<>();
+            products.add(product);
+            order.setProducts(products);
+        }
         order.setProject(projectService.findOneByHost("domain.ru"));
 
         orderService.save(order);

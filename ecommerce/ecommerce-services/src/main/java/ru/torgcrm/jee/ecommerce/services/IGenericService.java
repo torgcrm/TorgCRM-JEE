@@ -38,7 +38,7 @@ public interface IGenericService<D extends GenericDTO> {
      *
      * @param entity DTO
      */
-    void save(D entity);
+    D save(D entity);
 
     /**
      * Delete entity by id

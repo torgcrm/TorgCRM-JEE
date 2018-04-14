@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.torgcrm.jee.ecommerce.dto.CustomerDTO;
 import ru.torgcrm.jee.ecommerce.resources.AbstractResource;
 import ru.torgcrm.jee.ecommerce.services.ICustomerService;
+import ru.torgcrm.jee.security.Secured;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -28,6 +29,7 @@ public class CRMCustomerResource extends AbstractResource {
     ICustomerService customerService;
 
     @GET
+    @Secured
     public List<CustomerDTO> findAll() {
         return customerService.findAll();
     }

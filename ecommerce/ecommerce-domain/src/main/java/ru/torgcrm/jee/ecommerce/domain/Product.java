@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Product entity. Contains information about product.
@@ -30,8 +31,8 @@ public class Product extends AbstractWebPage {
     public static final String FIND_BY_CATALOG_SLUG = "FIND_BY_CATALOG_SLUG";
 
     @Id
-    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = Product.GEN_NAME)
+    @SequenceGenerator(sequenceName = SEQ_NAME, name = Product.GEN_NAME, allocationSize = 1)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "catalog_id")
@@ -46,6 +47,13 @@ public class Product extends AbstractWebPage {
     private Double oldPrice;
     @Column(name = "in_stock")
     private Boolean inStock;
+    private Boolean draft;
+    @OneToMany
+    @JoinTable(name = "raw_data_products",
+            joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "raw_data_id", referencedColumnName = "id")
+    )
+    private List<RawData> rawData;
 
     @Override
     public Long getId() {

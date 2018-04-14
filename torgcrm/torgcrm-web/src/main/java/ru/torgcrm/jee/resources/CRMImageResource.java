@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j;
 import ru.torgcrm.jee.ecommerce.dto.RawDataDTO;
 import ru.torgcrm.jee.ecommerce.resources.AbstractResource;
 import ru.torgcrm.jee.ecommerce.services.IRawDataService;
+import ru.torgcrm.jee.security.Secured;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -30,9 +31,11 @@ public class CRMImageResource extends AbstractResource {
     @Path("/upload")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.WILDCARD)
-    public void upload(byte[] base64) {
+    @Secured
+    public Long upload(byte[] base64) {
         RawDataDTO rawDataDTO = new RawDataDTO();
         rawDataDTO.setData(base64);
-        rawDataService.save(rawDataDTO);
+        RawDataDTO saved = rawDataService.save(rawDataDTO);
+        return saved.getId();
     }
 }

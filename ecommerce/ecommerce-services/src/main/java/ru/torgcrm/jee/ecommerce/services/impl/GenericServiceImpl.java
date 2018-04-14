@@ -63,8 +63,9 @@ public abstract class GenericServiceImpl<
     /**
      * {@inheritDoc}
      */
-    public void save(D dto) {
-        repository.save(mapper.toEntity(dto));
+    public D save(D dto) {
+        GenericEntity saved = repository.save(mapper.toEntity(dto));
+        return (D) mapper.toDto(saved);
     }
 
     /**
