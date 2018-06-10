@@ -1,9 +1,8 @@
 package ru.torgcrm.jee.resources;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import ru.torgcrm.jee.ecommerce.dto.CustomerDTO;
 import ru.torgcrm.jee.ecommerce.resources.AbstractResource;
-import ru.torgcrm.jee.ecommerce.services.ICustomerService;
+import ru.torgcrm.jee.ecommerce.services.CustomerService;
 import ru.torgcrm.jee.security.Secured;
 
 import javax.ejb.Stateless;
@@ -26,7 +25,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class CRMCustomerResource extends AbstractResource {
     @Inject
-    ICustomerService customerService;
+    CustomerService customerService;
 
     @GET
     @Secured

@@ -4,7 +4,7 @@ import ru.torgcrm.jee.ecommerce.domain.GenericEntity;
 import ru.torgcrm.jee.ecommerce.dto.GenericDTO;
 import ru.torgcrm.jee.ecommerce.mappers.EntityMapper;
 import ru.torgcrm.jee.ecommerce.repository.GenericRepository;
-import ru.torgcrm.jee.ecommerce.services.IGenericService;
+import ru.torgcrm.jee.ecommerce.services.GenericService;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public abstract class GenericServiceImpl<
         D extends GenericDTO,
         R extends GenericRepository,
-        M extends EntityMapper> implements IGenericService<D> {
+        M extends EntityMapper> implements GenericService<D> {
 
     @Inject
     private R repository;

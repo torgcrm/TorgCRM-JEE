@@ -1,7 +1,7 @@
 package ru.torgcrm.jee.ecommerce.resources;
 
 import ru.torgcrm.jee.ecommerce.dto.MenuDTO;
-import ru.torgcrm.jee.ecommerce.services.IMenuService;
+import ru.torgcrm.jee.ecommerce.services.MenuService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -21,7 +21,7 @@ import javax.ws.rs.core.MediaType;
 public class MenuResource extends AbstractResource {
 
     @Inject
-    private IMenuService menuService;
+    private MenuService menuService;
 
     /**
      * Get menu by code

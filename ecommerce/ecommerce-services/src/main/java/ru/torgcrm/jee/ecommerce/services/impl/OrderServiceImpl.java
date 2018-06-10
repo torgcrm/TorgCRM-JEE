@@ -3,7 +3,7 @@ package ru.torgcrm.jee.ecommerce.services.impl;
 import ru.torgcrm.jee.ecommerce.dto.OrderDTO;
 import ru.torgcrm.jee.ecommerce.mappers.OrderMapper;
 import ru.torgcrm.jee.ecommerce.repository.OrderRepository;
-import ru.torgcrm.jee.ecommerce.services.IOrderService;
+import ru.torgcrm.jee.ecommerce.services.OrderService;
 
 import javax.ejb.Stateless;
 
@@ -12,5 +12,5 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class OrderServiceImpl extends GenericServiceImpl<OrderDTO, OrderRepository, OrderMapper>
-        implements IOrderService {
+        implements OrderService {
 }

@@ -5,8 +5,9 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.torgcrm.jee.ecommerce.repository.jpa.JpaProductRepository;
+import ru.torgcrm.jee.ecommerce.repository.PageRepository;
 
 /**
  * @author Ilya Durdyev, funbanji@gmail.com
@@ -16,8 +17,12 @@ public class JpaProductRepositoryTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(JpaProductRepository.class)
+                .addPackage(PageRepository.class.getPackage())
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
+    @Test
+    public void saveTest() {
+
+    }
 }

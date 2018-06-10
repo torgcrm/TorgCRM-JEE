@@ -1,7 +1,7 @@
 package ru.torgcrm.jee.ecommerce.resources;
 
 import ru.torgcrm.jee.ecommerce.dto.PageDTO;
-import ru.torgcrm.jee.ecommerce.services.IPageService;
+import ru.torgcrm.jee.ecommerce.services.PageService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -21,7 +21,7 @@ import javax.ws.rs.core.MediaType;
 public class PageResource extends AbstractResource {
 
     @Inject
-    private IPageService pageService;
+    private PageService pageService;
 
     @GET
     @Path("{slug}")

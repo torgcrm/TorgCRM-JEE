@@ -2,7 +2,7 @@ package ru.torgcrm.jee.ecommerce.resources;
 
 import lombok.Getter;
 import ru.torgcrm.jee.ecommerce.dto.ProjectDTO;
-import ru.torgcrm.jee.ecommerce.services.IProjectService;
+import ru.torgcrm.jee.ecommerce.services.ProjectService;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ public abstract class AbstractResource {
     @Getter
     private HttpServletRequest request;
     @Inject
-    private IProjectService projectService;
+    private ProjectService projectService;
 
     protected String getProjectHost() {
         return request.getHeader(PROJECT_HOST_HEADER);

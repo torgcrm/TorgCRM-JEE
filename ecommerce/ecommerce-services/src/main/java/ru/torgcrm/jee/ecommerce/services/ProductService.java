@@ -10,6 +10,6 @@ import java.util.List;
  * @author Ilya Durdyev, funbanji@gmail.com
  * @see ProductDTO
  */
-public interface IProductService extends IAbstractWebPageService<ProductDTO> {
+public interface ProductService extends AbstractWebPageService<ProductDTO> {
     List<ProductDTO> findAllByCatalogSlug(String slug);
 }

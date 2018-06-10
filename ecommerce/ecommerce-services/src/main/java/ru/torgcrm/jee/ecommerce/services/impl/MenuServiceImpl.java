@@ -4,7 +4,7 @@ import ru.torgcrm.jee.ecommerce.domain.Menu;
 import ru.torgcrm.jee.ecommerce.dto.MenuDTO;
 import ru.torgcrm.jee.ecommerce.mappers.MenuMapper;
 import ru.torgcrm.jee.ecommerce.repository.MenuRepository;
-import ru.torgcrm.jee.ecommerce.services.IMenuService;
+import ru.torgcrm.jee.ecommerce.services.MenuService;
 
 import javax.ejb.Stateless;
 
@@ -15,7 +15,7 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class MenuServiceImpl extends GenericServiceImpl<MenuDTO, MenuRepository, MenuMapper>
-        implements IMenuService {
+        implements MenuService {
     /**
      * {@inheritDoc}
      */

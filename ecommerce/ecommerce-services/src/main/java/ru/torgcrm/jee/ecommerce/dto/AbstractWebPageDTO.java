@@ -12,7 +12,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public abstract class AbstractWebPageDTO extends AbstractProjectDTO {
     private String title;
-    private String keywords;
-    private String description;
+    private String metaKeywords;
+    private String metaDescription;
     private String slug;
+    private String seoText;
 }

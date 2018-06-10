@@ -8,6 +8,6 @@ import ru.torgcrm.jee.ecommerce.dto.ProjectDTO;
  * @author Ilya Durdyev, funbanji@gmail.com
  * @see ru.torgcrm.jee.ecommerce.dto.ProjectDTO
  */
-public interface IProjectService {
+public interface ProjectService {
     ProjectDTO findOneByHost(String host);
 }

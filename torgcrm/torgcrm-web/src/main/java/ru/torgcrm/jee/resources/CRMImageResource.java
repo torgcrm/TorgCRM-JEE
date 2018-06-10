@@ -3,16 +3,14 @@ package ru.torgcrm.jee.resources;
 import lombok.extern.log4j.Log4j;
 import ru.torgcrm.jee.ecommerce.dto.RawDataDTO;
 import ru.torgcrm.jee.ecommerce.resources.AbstractResource;
-import ru.torgcrm.jee.ecommerce.services.IRawDataService;
+import ru.torgcrm.jee.ecommerce.services.RawDataService;
 import ru.torgcrm.jee.security.Secured;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * CRM Image resource
@@ -25,7 +23,7 @@ import javax.ws.rs.core.MediaType;
 public class CRMImageResource extends AbstractResource {
 
     @Inject
-    private IRawDataService rawDataService;
+    private RawDataService rawDataService;
 
     @POST
     @Path("/upload")
@@ -37,5 +35,14 @@ public class CRMImageResource extends AbstractResource {
         rawDataDTO.setData(base64);
         RawDataDTO saved = rawDataService.save(rawDataDTO);
         return saved.getId();
+    }
+
+    @GET
+    @Secured
+    @Path("/list")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.WILDCARD)
+    public List getAll() {
+        return rawDataService.findAll();
     }
 }

@@ -3,7 +3,7 @@ package ru.torgcrm.jee.ecommerce.services.impl;
 import ru.torgcrm.jee.ecommerce.dto.CatalogDTO;
 import ru.torgcrm.jee.ecommerce.mappers.CatalogMapper;
 import ru.torgcrm.jee.ecommerce.repository.CatalogRepository;
-import ru.torgcrm.jee.ecommerce.services.ICatalogService;
+import ru.torgcrm.jee.ecommerce.services.CatalogService;
 
 import javax.ejb.Stateless;
 
@@ -14,5 +14,5 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class CatalogServiceImpl extends GenericServiceImpl<CatalogDTO, CatalogRepository, CatalogMapper>
-        implements ICatalogService {
+        implements CatalogService {
 }

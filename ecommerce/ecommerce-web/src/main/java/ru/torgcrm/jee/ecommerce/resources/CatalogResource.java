@@ -1,8 +1,8 @@
 package ru.torgcrm.jee.ecommerce.resources;
 
 import ru.torgcrm.jee.ecommerce.dto.ProductDTO;
-import ru.torgcrm.jee.ecommerce.services.ICatalogService;
-import ru.torgcrm.jee.ecommerce.services.IProductService;
+import ru.torgcrm.jee.ecommerce.services.CatalogService;
+import ru.torgcrm.jee.ecommerce.services.ProductService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -23,9 +23,9 @@ import java.util.List;
 public class CatalogResource extends AbstractResource {
 
     @Inject
-    private ICatalogService catalogService;
+    private CatalogService catalogService;
     @Inject
-    private IProductService productService;
+    private ProductService productService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

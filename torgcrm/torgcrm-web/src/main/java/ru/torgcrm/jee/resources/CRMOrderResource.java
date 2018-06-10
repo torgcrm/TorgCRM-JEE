@@ -6,9 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.torgcrm.jee.ecommerce.dto.OrderDTO;
 import ru.torgcrm.jee.ecommerce.dto.ProductDTO;
 import ru.torgcrm.jee.ecommerce.resources.AbstractResource;
-import ru.torgcrm.jee.ecommerce.services.IOrderService;
-import ru.torgcrm.jee.ecommerce.services.IProductService;
-import ru.torgcrm.jee.ecommerce.services.IProjectService;
+import ru.torgcrm.jee.ecommerce.services.OrderService;
+import ru.torgcrm.jee.ecommerce.services.ProductService;
+import ru.torgcrm.jee.ecommerce.services.ProjectService;
 import ru.torgcrm.jee.security.Secured;
 
 import javax.ejb.Stateless;
@@ -28,13 +28,13 @@ import java.util.List;
 public class CRMOrderResource extends AbstractResource {
 
     @Inject
-    private IOrderService orderService;
+    private OrderService orderService;
     @Inject
     private RuntimeService runtimeService;
     @Inject
-    private IProductService productService;
+    private ProductService productService;
     @Inject
-    private IProjectService projectService;
+    private ProjectService projectService;
 
     @GET
     @Secured

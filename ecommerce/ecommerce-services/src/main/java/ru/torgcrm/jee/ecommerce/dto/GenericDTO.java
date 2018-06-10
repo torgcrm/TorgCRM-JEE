@@ -3,6 +3,8 @@ package ru.torgcrm.jee.ecommerce.dto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Date;
+
 /**
  * Generic DTO class
  *
@@ -10,6 +12,8 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public abstract class GenericDTO extends Object {
+public abstract class GenericDTO {
     private Long id;
+    private Date created;
+    private Date updated;
 }

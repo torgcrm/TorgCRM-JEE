@@ -7,5 +7,5 @@ import ru.torgcrm.jee.ecommerce.dto.CatalogDTO;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface ICatalogService extends IGenericService<CatalogDTO> {
+public interface CatalogService extends GenericService<CatalogDTO> {
 }

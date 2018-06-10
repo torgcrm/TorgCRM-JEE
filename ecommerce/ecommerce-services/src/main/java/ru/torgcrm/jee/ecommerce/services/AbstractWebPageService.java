@@ -8,7 +8,7 @@ import ru.torgcrm.jee.ecommerce.dto.MenuDTO;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface IAbstractWebPageService<T extends GenericDTO> extends IGenericService<T> {
+public interface AbstractWebPageService<T extends GenericDTO> extends GenericService<T> {
     /**
      * Find by project and slug
      *

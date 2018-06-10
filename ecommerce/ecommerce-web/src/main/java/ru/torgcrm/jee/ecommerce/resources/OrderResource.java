@@ -5,8 +5,8 @@ import org.flowable.engine.runtime.ProcessInstance;
 import org.springframework.transaction.annotation.Transactional;
 import ru.torgcrm.jee.ecommerce.dto.OrderDTO;
 import ru.torgcrm.jee.ecommerce.dto.ProductDTO;
-import ru.torgcrm.jee.ecommerce.services.IOrderService;
-import ru.torgcrm.jee.ecommerce.services.IProductService;
+import ru.torgcrm.jee.ecommerce.services.OrderService;
+import ru.torgcrm.jee.ecommerce.services.ProductService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -27,11 +27,11 @@ import java.util.List;
 public class OrderResource extends AbstractResource {
 
     @Inject
-    private IOrderService orderService;
+    private OrderService orderService;
     @Inject
     private RuntimeService runtimeService;
     @Inject
-    private IProductService productService;
+    private ProductService productService;
 
     @POST
     @Path("/one-click")

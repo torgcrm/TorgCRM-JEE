@@ -5,5 +5,5 @@ import ru.torgcrm.jee.ecommerce.dto.CustomerDTO;
 /**
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface ICustomerService extends IGenericService<CustomerDTO> {
+public interface CustomerService extends GenericService<CustomerDTO> {
 }

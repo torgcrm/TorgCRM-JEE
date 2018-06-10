@@ -8,5 +8,5 @@ import ru.torgcrm.jee.ecommerce.dto.OrderDTO;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface IOrderService extends IGenericService<OrderDTO> {
+public interface OrderService extends GenericService<OrderDTO> {
 }

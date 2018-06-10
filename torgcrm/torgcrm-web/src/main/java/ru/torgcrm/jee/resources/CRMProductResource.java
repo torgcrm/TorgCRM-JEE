@@ -1,17 +1,19 @@
 package ru.torgcrm.jee.resources;
 
 import lombok.extern.log4j.Log4j;
-import ru.torgcrm.jee.ecommerce.domain.RawData;
 import ru.torgcrm.jee.ecommerce.dto.ProductDTO;
 import ru.torgcrm.jee.ecommerce.dto.RawDataDTO;
 import ru.torgcrm.jee.ecommerce.resources.AbstractResource;
-import ru.torgcrm.jee.ecommerce.services.IProductService;
-import ru.torgcrm.jee.ecommerce.services.IRawDataService;
+import ru.torgcrm.jee.ecommerce.services.ProductService;
+import ru.torgcrm.jee.ecommerce.services.RawDataService;
 import ru.torgcrm.jee.security.Secured;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +27,9 @@ import java.util.List;
 public class CRMProductResource extends AbstractResource {
 
     @Inject
-    private IProductService productService;
+    private ProductService productService;
     @Inject
-    private IRawDataService rawDataService;
+    private RawDataService rawDataService;
 
     @Path("/")
     @PUT

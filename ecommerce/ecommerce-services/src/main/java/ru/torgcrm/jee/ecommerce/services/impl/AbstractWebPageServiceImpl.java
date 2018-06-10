@@ -4,7 +4,7 @@ import ru.torgcrm.jee.ecommerce.domain.GenericEntity;
 import ru.torgcrm.jee.ecommerce.dto.GenericDTO;
 import ru.torgcrm.jee.ecommerce.mappers.EntityMapper;
 import ru.torgcrm.jee.ecommerce.repository.AbstractWebPageRepository;
-import ru.torgcrm.jee.ecommerce.services.IAbstractWebPageService;
+import ru.torgcrm.jee.ecommerce.services.AbstractWebPageService;
 
 /**
  * Abstract service for entities with slug
@@ -14,7 +14,7 @@ import ru.torgcrm.jee.ecommerce.services.IAbstractWebPageService;
 public abstract class AbstractWebPageServiceImpl<
         D extends GenericDTO,
         R extends AbstractWebPageRepository,
-        M extends EntityMapper> extends GenericServiceImpl<D, R, M> implements IAbstractWebPageService<D> {
+        M extends EntityMapper> extends GenericServiceImpl<D, R, M> implements AbstractWebPageService<D> {
     /**
      * {@inheritDoc}
      */

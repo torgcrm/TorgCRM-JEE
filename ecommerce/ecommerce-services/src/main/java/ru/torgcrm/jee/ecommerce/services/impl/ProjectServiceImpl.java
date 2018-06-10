@@ -4,19 +4,19 @@ import ru.torgcrm.jee.ecommerce.domain.Project;
 import ru.torgcrm.jee.ecommerce.dto.ProjectDTO;
 import ru.torgcrm.jee.ecommerce.mappers.ProjectMapper;
 import ru.torgcrm.jee.ecommerce.repository.ProjectRepository;
-import ru.torgcrm.jee.ecommerce.services.IProjectService;
+import ru.torgcrm.jee.ecommerce.services.ProjectService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 
 /**
- * implementation of Project service {@link IProjectService}
+ * implementation of Project service {@link ProjectService}
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Stateless
-public class ProjectServiceImpl implements IProjectService {
+public class ProjectServiceImpl implements ProjectService {
     @Inject
     private ProjectRepository projectRepository;
     @Inject

@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface IGenericService<D extends GenericDTO> {
+public interface GenericService<D extends GenericDTO> {
     /**
      * Get all products
      *

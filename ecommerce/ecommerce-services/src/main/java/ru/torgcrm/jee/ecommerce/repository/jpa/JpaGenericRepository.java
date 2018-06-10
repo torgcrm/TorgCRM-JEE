@@ -23,7 +23,7 @@ public class JpaGenericRepository<T extends GenericEntity>
         implements GenericRepository<T> {
     private final Logger log = Logger.getLogger(JpaGenericRepository.class);
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "TorgCRMUnit")
     protected EntityManager entityManager;
 
     private final TypeToken<T> typeToken = new TypeToken<T>(getClass()) {};

@@ -1,7 +1,7 @@
 package ru.torgcrm.jee.ecommerce.resources;
 
 import ru.torgcrm.jee.ecommerce.dto.ProductDTO;
-import ru.torgcrm.jee.ecommerce.services.IProductService;
+import ru.torgcrm.jee.ecommerce.services.ProductService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ProductsResource extends AbstractResource {
 
     @Inject
-    private IProductService productService;
+    private ProductService productService;
 
     /**
      * Get all products {@link ProductDTO} of current project.

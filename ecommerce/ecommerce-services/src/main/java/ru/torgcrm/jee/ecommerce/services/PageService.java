@@ -7,5 +7,5 @@ import ru.torgcrm.jee.ecommerce.dto.PageDTO;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface IPageService extends IAbstractWebPageService<PageDTO> {
+public interface PageService extends AbstractWebPageService<PageDTO> {
 }
