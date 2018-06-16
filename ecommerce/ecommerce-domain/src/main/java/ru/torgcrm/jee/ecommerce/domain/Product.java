@@ -34,7 +34,7 @@ public class Product extends AbstractWebPage {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = Product.GEN_NAME)
     @SequenceGenerator(sequenceName = SEQ_NAME, name = Product.GEN_NAME, allocationSize = 1)
     private Long id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "catalog_id")
     private Catalog catalog;
     @Column(name = "view_name")

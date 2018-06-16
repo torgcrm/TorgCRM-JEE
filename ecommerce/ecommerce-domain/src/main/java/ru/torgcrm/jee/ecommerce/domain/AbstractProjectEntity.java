@@ -3,10 +3,7 @@ package ru.torgcrm.jee.ecommerce.domain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 /**
  * Entities of project
@@ -17,7 +14,10 @@ import javax.persistence.MappedSuperclass;
 @EqualsAndHashCode(callSuper = false)
 @MappedSuperclass
 public abstract class AbstractProjectEntity extends GenericEntity {
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinColumn(name = "project_id")
     private Project project;
 }

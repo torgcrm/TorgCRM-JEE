@@ -15,10 +15,10 @@ public class ProjectGenerator extends AbstractGenerator<Project, ProjectDTO> {
     @Override
     public Project createEntity() {
         Project project = new Project();
-        project.setCode(dataFactory.getRandomWord());
-        project.setTitle(dataFactory.getRandomWord());
-        project.setHost(dataFactory.getRandomWord());
-        project.setLogo(dataFactory.getRandomWord());
+        project.setCode(dataFactory.getRandomWord(50));
+        project.setTitle(dataFactory.getRandomWord(50));
+        project.setHost(dataFactory.getRandomWord(50));
+        project.setLogo(dataFactory.getRandomWord(50));
         project.setMetaDescription(dataFactory.getRandomText(100));
         project.setMetaKeywords(dataFactory.getRandomWord());
         project.setPhone(dataFactory.getNumberText(10));
@@ -28,12 +28,12 @@ public class ProjectGenerator extends AbstractGenerator<Project, ProjectDTO> {
     @Override
     public ProjectDTO createDto() {
         ProjectDTO projectDTO = new ProjectDTO();
-        projectDTO.setCode(dataFactory.getRandomWord());
-        projectDTO.setTitle(dataFactory.getRandomWord());
-        projectDTO.setHost(dataFactory.getRandomWord());
-        projectDTO.setLogo(dataFactory.getRandomWord());
+        projectDTO.setCode(dataFactory.getRandomWord(50));
+        projectDTO.setTitle(dataFactory.getRandomWord(50));
+        projectDTO.setHost(dataFactory.getRandomWord(50));
+        projectDTO.setLogo(dataFactory.getRandomWord(50));
         projectDTO.setMetaDescription(dataFactory.getRandomText(100));
-        projectDTO.setMetaKeywords(dataFactory.getRandomWord());
+        projectDTO.setMetaKeywords(dataFactory.getRandomWord(50));
         projectDTO.setPhone(dataFactory.getNumberText(10));
         return projectDTO;
     }

@@ -26,8 +26,8 @@ public class JpaAbstractWebPageRepository<T extends AbstractWebPage> extends Jpa
             CriteriaQuery<T> cQuery = cb.createQuery(getTemplateClass());
             Root<T> root = cQuery.from(getTemplateClass());
             cQuery.select(root)
-                    .where(cb.equal(root.get("project").get("id"), projectId))
-                    .where(cb.equal(root.get("slug"), slug));
+                    .where(cb.equal(root.get("project").get("id"), projectId),
+                            cb.equal(root.get("slug"), slug));
             return entityManager.createQuery(cQuery).getSingleResult();
         } catch (Exception e) {
             log.error("Something went wrong while trying to execute query: " + e.getMessage());

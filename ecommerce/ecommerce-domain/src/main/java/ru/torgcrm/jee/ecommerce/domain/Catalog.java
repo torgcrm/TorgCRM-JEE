@@ -20,10 +20,13 @@ public class Catalog extends AbstractWebPage {
     public static final String SEQ_NAME = "Seq_Catalog";
 
     @Id
-    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
+    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "catalog")
+    @OneToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    }, mappedBy = "catalog")
     private List<Product> products;
 
     @Override

@@ -25,7 +25,7 @@ import java.security.Key;
 @Log4j
 public class JwtTokenFilter implements ContainerRequestFilter {
     @Override
-    public void filter(ContainerRequestContext containerRequestContext) throws IOException {
+    public void filter(ContainerRequestContext containerRequestContext) {
         String authorizationHeader = containerRequestContext
                 .getHeaderString(HttpHeaders.AUTHORIZATION);
         if (authorizationHeader != null) {

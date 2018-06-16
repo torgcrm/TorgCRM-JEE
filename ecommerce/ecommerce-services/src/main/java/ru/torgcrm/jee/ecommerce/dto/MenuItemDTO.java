@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * Menu item DTO
+ * Menu item DTO.
  * see also {@link ru.torgcrm.jee.ecommerce.domain.MenuItem}
  *
  * @author Ilya Durdyev, funbanji@gmail.com
@@ -17,4 +17,5 @@ public class MenuItemDTO extends AbstractProjectDTO {
     private String name;
     private String code;
     private String link;
+    private MenuDTO menu;
 }

@@ -22,21 +22,21 @@ public class ProductGenerator extends AbstractGenerator<Product, ProductDTO> {
     @Override
     public Product createEntity() {
         Product product = new Product();
-        product.setArticle(dataFactory.getRandomText(300));
+        product.setArticle(dataFactory.getRandomText(50));
         product.setDraft(false);
         product.setCatalog(catalogGenerator.createEntity());
         product.setInStock(true);
         product.setOldPrice(Double.valueOf(dataFactory.getNumberBetween(500, 1000)));
         product.setPrice(Double.valueOf(dataFactory.getNumberBetween(10, 300)));
-        product.setShortDesc(dataFactory.getNumberText(150));
+        product.setShortDesc(dataFactory.getRandomWord(50));
         product.setViewName(dataFactory.getRandomWord());
         product.setCreated(dataFactory.getDate(2018, 1, 2));
         product.setUpdated(dataFactory.getDate(2018, 1, 2));
         product.setMetaDescription(dataFactory.getRandomText(100));
         product.setMetaKeywords(dataFactory.getRandomText(100));
         product.setSeoText(dataFactory.getRandomText(100));
-        product.setSlug(dataFactory.getRandomWord());
-        product.setTitle(dataFactory.getRandomWord());
+        product.setSlug(dataFactory.getRandomWord(10));
+        product.setTitle(dataFactory.getRandomWord(20));
         product.setProject(projectGenerator.createEntity());
         return product;
     }
@@ -44,21 +44,21 @@ public class ProductGenerator extends AbstractGenerator<Product, ProductDTO> {
     @Override
     public ProductDTO createDto() {
         ProductDTO productDto = new ProductDTO();
-        productDto.setArticle(dataFactory.getRandomText(300));
+        productDto.setArticle(dataFactory.getRandomText(50));
         productDto.setDraft(false);
         productDto.setCatalog(catalogGenerator.createDto());
         productDto.setInStock(true);
         productDto.setOldPrice(Double.valueOf(dataFactory.getNumberBetween(500, 1000)));
         productDto.setPrice(Double.valueOf(dataFactory.getNumberBetween(10, 300)));
         productDto.setShortDesc(dataFactory.getNumberText(150));
-        productDto.setViewName(dataFactory.getRandomWord());
+        productDto.setViewName(dataFactory.getRandomWord(50));
         productDto.setCreated(dataFactory.getDate(2018, 1, 2));
         productDto.setUpdated(dataFactory.getDate(2018, 1, 2));
         productDto.setMetaDescription(dataFactory.getRandomText(100));
         productDto.setMetaKeywords(dataFactory.getRandomText(100));
         productDto.setSeoText(dataFactory.getRandomText(100));
-        productDto.setSlug(dataFactory.getRandomWord());
-        productDto.setTitle(dataFactory.getRandomWord());
+        productDto.setSlug(dataFactory.getRandomWord(10));
+        productDto.setTitle(dataFactory.getRandomWord(20));
         productDto.setProject(projectGenerator.createDto());
         return productDto;
     }

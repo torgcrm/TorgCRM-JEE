@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -26,7 +27,8 @@ public class JpaGenericRepository<T extends GenericEntity>
     @PersistenceContext(unitName = "TorgCRMUnit")
     protected EntityManager entityManager;
 
-    private final TypeToken<T> typeToken = new TypeToken<T>(getClass()) {};
+    private final TypeToken<T> typeToken = new TypeToken<T>(getClass()) {
+    };
     private final Type type = typeToken.getType();
 
     /**
@@ -91,7 +93,8 @@ public class JpaGenericRepository<T extends GenericEntity>
      * {@inheritDoc}
      */
     @Override
-    public T save(T entity) {
+    @Transactional
+    public T persist(T entity) {
         entityManager.persist(entity);
         return entity;
     }
@@ -100,6 +103,16 @@ public class JpaGenericRepository<T extends GenericEntity>
      * {@inheritDoc}
      */
     @Override
+    @Transactional
+    public T merge(T entity) {
+        return entityManager.merge(entity);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
     public void delete(T entity) {
         entityManager.remove(entity);
     }
@@ -108,6 +121,7 @@ public class JpaGenericRepository<T extends GenericEntity>
      * {@inheritDoc}
      */
     @Override
+    @Transactional
     public void delete(Long id) {
         entityManager.remove(findById(id));
     }
@@ -117,5 +131,17 @@ public class JpaGenericRepository<T extends GenericEntity>
      */
     protected Class getTemplateClass() throws ClassNotFoundException {
         return Class.forName(type.getTypeName());
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public T getReference(Long id) {
+        try {
+            return (T) entityManager.getReference(getTemplateClass(), id);
+        } catch (ClassNotFoundException e) {
+            return null;
+        }
     }
 }

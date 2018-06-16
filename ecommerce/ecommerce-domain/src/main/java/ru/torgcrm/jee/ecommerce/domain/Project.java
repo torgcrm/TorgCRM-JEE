@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * E-Commerce project, e.g. website
@@ -22,7 +23,7 @@ public class Project extends GenericEntity {
     public static final String FIND_PROJECT_BY_HOST = "FIND_PROJECT_BY_HOST";
 
     @Id
-    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
+    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
     private String title;
@@ -36,6 +37,11 @@ public class Project extends GenericEntity {
     private String phone;
     @Lob
     private String logo;
+    @OneToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.MERGE,
+            CascadeType.PERSIST
+    }, mappedBy = "project")
+    private List<Product> products;
 
     @Override
     public Long getId() {

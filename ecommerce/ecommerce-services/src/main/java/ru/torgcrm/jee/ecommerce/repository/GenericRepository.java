@@ -32,12 +32,24 @@ public interface GenericRepository<T extends GenericEntity> {
     T findById(Long id);
 
     /**
-     * Save or update entity in database
+     * Save or update entity in database.
      *
      * @param entity {@link GenericEntity} some entity class
      * @return updated entity with id
      */
-    T save(T entity);
+    T persist(T entity);
+
+    /**
+     * Merge object.
+     * <p>
+     * Find an attached object with the same id and update it.
+     * If exists update and return the already attached object.
+     * If doesn't exist insert the new register to the database.
+     *
+     * @param entity {@link GenericEntity} som entity class
+     * @return merged entity
+     */
+    T merge(T entity);
 
     /**
      * Delete entity by object
@@ -52,4 +64,13 @@ public interface GenericRepository<T extends GenericEntity> {
      * @param id Long unique ID
      */
     void delete(Long id);
+
+    /**
+     * Get entity from entity manager context.
+     *
+     * @param id entity id.
+     * @return {@link GenericEntity} abstract entity.
+     * @throws ClassNotFoundException
+     */
+    T getReference(Long id);
 }
