@@ -41,6 +41,7 @@ public class OrderGenerator extends AbstractGenerator<Order, OrderDTO> {
         order.setUpdated(dataFactory.getDate(2018, 1, 2));
         order.setProject(projectGenerator.createEntity());
         order.setCustomer(customerGenerator.createEntity());
+        order.setProcessId(dataFactory.getRandomChars(10));
         return order;
     }
 
@@ -60,6 +61,7 @@ public class OrderGenerator extends AbstractGenerator<Order, OrderDTO> {
         orderDto.setUpdated(dataFactory.getDate(2018, 1, 2));
         orderDto.setProject(projectGenerator.createDto());
         orderDto.setCustomer(customerGenerator.createDto());
+        orderDto.setProcessId(dataFactory.getRandomChars(10));
         return orderDto;
     }
 }

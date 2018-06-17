@@ -24,6 +24,7 @@ public class PageGenerator extends AbstractGenerator<Page, PageDTO> {
         page.setTitle(dataFactory.getRandomWord());
         page.setSlug(dataFactory.getRandomWord());
         page.setSeoText(dataFactory.getRandomText(100));
+        page.setMetaDescription(dataFactory.getRandomText(50));
         page.setMetaKeywords(dataFactory.getRandomWord());
         page.setUpdated(dataFactory.getDate(2018, 1, 2));
         page.setCreated(dataFactory.getDate(2018, 1, 2));

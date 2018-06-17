@@ -21,13 +21,13 @@ public class MenuItem extends AbstractProjectEntity {
     public static final String SEQ_NAME = "Seq_Menu_Items";
 
     @Id
-    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
+    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
     @Setter
     private String name;
     private String code;
-    @ManyToOne(targetEntity = Menu.class)
+    @ManyToOne(targetEntity = Menu.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Menu menu;
     private String link;
 

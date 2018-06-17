@@ -11,6 +11,6 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @ApplicationScoped
-public class JpaCatalogRepository extends JpaGenericRepository<Catalog>
+public class JpaCatalogRepository extends JpaAbstractWebPageRepository<Catalog>
         implements CatalogRepository {
 }

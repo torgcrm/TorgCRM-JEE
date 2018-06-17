@@ -19,7 +19,7 @@ public class Page extends AbstractWebPage {
     public static final String SEQ_NAME = "Seq_Pages";
 
     @Id
-    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
+    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
 

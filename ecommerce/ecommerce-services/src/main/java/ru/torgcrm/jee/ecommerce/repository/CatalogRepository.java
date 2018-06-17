@@ -7,5 +7,5 @@ import ru.torgcrm.jee.ecommerce.domain.Catalog;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface CatalogRepository extends GenericRepository<Catalog> {
+public interface CatalogRepository extends AbstractWebPageRepository<Catalog> {
 }

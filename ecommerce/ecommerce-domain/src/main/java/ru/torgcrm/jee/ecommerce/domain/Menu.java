@@ -25,7 +25,7 @@ public class Menu extends AbstractProjectEntity {
     public static final String FIND_BY_PROJECT_AND_CODE = "FIND_BY_PROJECT_AND_CODE";
 
     @Id
-    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME)
+    @SequenceGenerator(sequenceName = SEQ_NAME, name = GEN_NAME, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = GEN_NAME)
     private Long id;
     private String name;

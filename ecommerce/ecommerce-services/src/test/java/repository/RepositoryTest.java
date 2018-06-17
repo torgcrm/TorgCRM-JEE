@@ -8,8 +8,6 @@ package repository;
 public interface RepositoryTest<T> {
     void findAllTest();
 
-    void findAllByProjectIdTest();
-
     void findByIdTest();
 
     void saveTest();
