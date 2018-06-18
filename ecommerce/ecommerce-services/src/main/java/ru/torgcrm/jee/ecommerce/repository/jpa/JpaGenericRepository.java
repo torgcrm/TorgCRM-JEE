@@ -52,24 +52,6 @@ public class JpaGenericRepository<T extends GenericEntity>
      * {@inheritDoc}
      */
     @Override
-    public List<T> findAllByProjectId(Long projectId) {
-        try {
-            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-            CriteriaQuery<T> cQuery = cb.createQuery(getTemplateClass());
-            Root<T> root = cQuery.from(getTemplateClass());
-            cQuery.select(root).where(cb.equal(root.get("project").get("id"), projectId));
-
-            return entityManager.createQuery(cQuery).getResultList();
-        } catch (ClassNotFoundException e) {
-            log.error("Class not found exception, while trying to make criteria query: " + e.getMessage());
-        }
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public T findById(Long id) {
         try {
             CriteriaBuilder cb = entityManager.getCriteriaBuilder();

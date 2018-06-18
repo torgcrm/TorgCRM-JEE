@@ -45,7 +45,7 @@ public class OrderResource extends AbstractResource {
         order.setProducts(products);
         order.setProject(getCurrentProject());
 
-        orderService.save(order);
+        orderService.persist(order);
         return getOkStatus();
     }
 

@@ -64,7 +64,7 @@ public class CRMOrderResource extends AbstractResource {
         }
         order.setProject(projectService.findOneByHost("domain.ru"));
 
-        orderService.save(order);
+        orderService.persist(order);
         return getOkStatus();
     }
 }

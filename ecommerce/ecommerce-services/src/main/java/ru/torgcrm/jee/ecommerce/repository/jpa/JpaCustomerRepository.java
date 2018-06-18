@@ -11,5 +11,5 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @ApplicationScoped
-public class JpaCustomerRepository extends JpaGenericRepository<Customer> implements CustomerRepository {
+public class JpaCustomerRepository extends JpaAbstractProjectRepository<Customer> implements CustomerRepository {
 }

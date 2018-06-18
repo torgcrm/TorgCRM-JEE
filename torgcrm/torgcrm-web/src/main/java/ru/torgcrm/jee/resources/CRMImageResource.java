@@ -33,7 +33,7 @@ public class CRMImageResource extends AbstractResource {
     public Long upload(byte[] base64) {
         RawDataDTO rawDataDTO = new RawDataDTO();
         rawDataDTO.setData(base64);
-        RawDataDTO saved = rawDataService.save(rawDataDTO);
+        RawDataDTO saved = rawDataService.persist(rawDataDTO);
         return saved.getId();
     }
 

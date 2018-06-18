@@ -7,7 +7,7 @@ import ru.torgcrm.jee.ecommerce.domain.Menu;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface MenuRepository extends GenericRepository<Menu> {
+public interface MenuRepository extends AbstractProjectRepository<Menu> {
     /**
      * Find by project and code
      *

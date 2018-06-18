@@ -7,7 +7,7 @@ import ru.torgcrm.jee.ecommerce.dto.MenuDTO;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface MenuService extends GenericService<MenuDTO> {
+public interface MenuService extends AbstractProjectService<MenuDTO> {
     /**
      * Find by project and code
      *

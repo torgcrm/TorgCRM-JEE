@@ -23,7 +23,7 @@ import java.util.List;
         @NamedQuery(name = Product.FIND_BY_CATALOG_SLUG,
                 query = "SELECT p from Product p where p.catalog.slug=:catalogSlug")
 })
-public class Product extends AbstractWebPage {
+public class Product extends AbstractWebPageEntity {
     public static final String GEN_NAME = "Gen_Products";
     public static final String SEQ_NAME = "Seq_Products";
     public static final String FIND_BY_PROJECT = "FIND_BY_PROJECT";

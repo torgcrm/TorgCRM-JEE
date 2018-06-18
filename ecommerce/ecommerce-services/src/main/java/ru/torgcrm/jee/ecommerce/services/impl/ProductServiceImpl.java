@@ -7,6 +7,7 @@ import ru.torgcrm.jee.ecommerce.repository.ProductRepository;
 import ru.torgcrm.jee.ecommerce.services.ProductService;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -17,9 +18,24 @@ import java.util.List;
 @Stateless
 public class ProductServiceImpl extends AbstractWebPageServiceImpl<ProductDTO, ProductRepository, ProductMapper>
         implements ProductService {
+    @Inject
+    ProductRepository repository;
+    @Inject
+    ProductMapper mapper;
+
     @Override
     public List<ProductDTO> findAllByCatalogSlug(String slug) {
         List<Product> products = getRepository().findAllByCatalogSlug(slug);
         return getMapper().toDto(products);
+    }
+
+    @Override
+    protected ProductRepository getRepository() {
+        return repository;
+    }
+
+    @Override
+    protected ProductMapper getMapper() {
+        return mapper;
     }
 }

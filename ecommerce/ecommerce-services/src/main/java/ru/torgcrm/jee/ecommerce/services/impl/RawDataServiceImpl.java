@@ -13,4 +13,13 @@ import javax.ejb.Stateless;
 @Stateless
 public class RawDataServiceImpl extends GenericServiceImpl<RawDataDTO, RawDataRepository, RawDataMapper>
         implements RawDataService {
+    @Override
+    protected RawDataRepository getRepository() {
+        return null;
+    }
+
+    @Override
+    protected RawDataMapper getMapper() {
+        return null;
+    }
 }

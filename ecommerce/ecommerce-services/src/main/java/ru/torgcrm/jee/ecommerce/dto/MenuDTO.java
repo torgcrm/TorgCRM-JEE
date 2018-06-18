@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-public class MenuDTO extends AbstractProjectDTO {
+public class MenuDTO extends AbstractWebPageDTO {
     private String name;
     private String code;
     List<MenuItemDTO> menuItems;

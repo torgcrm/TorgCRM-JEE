@@ -1,5 +1,6 @@
 package ru.torgcrm.jee.ecommerce.services;
 
+import ru.torgcrm.jee.ecommerce.dto.AbstractWebPageDTO;
 import ru.torgcrm.jee.ecommerce.dto.GenericDTO;
 import ru.torgcrm.jee.ecommerce.dto.MenuDTO;
 
@@ -8,7 +9,7 @@ import ru.torgcrm.jee.ecommerce.dto.MenuDTO;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface AbstractWebPageService<T extends GenericDTO> extends GenericService<T> {
+public interface AbstractWebPageService<T extends AbstractWebPageDTO> extends AbstractProjectService<T> {
     /**
      * Find by project and slug
      *

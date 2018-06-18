@@ -15,7 +15,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "catalog")
-public class Catalog extends AbstractWebPage {
+public class Catalog extends AbstractWebPageEntity {
     public static final String GEN_NAME = "Gen_Catalog";
     public static final String SEQ_NAME = "Seq_Catalog";
 

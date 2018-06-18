@@ -14,7 +14,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "pages")
-public class Page extends AbstractWebPage {
+public class Page extends AbstractWebPageEntity {
     public static final String GEN_NAME = "Gen_Pages";
     public static final String SEQ_NAME = "Seq_Pages";
 

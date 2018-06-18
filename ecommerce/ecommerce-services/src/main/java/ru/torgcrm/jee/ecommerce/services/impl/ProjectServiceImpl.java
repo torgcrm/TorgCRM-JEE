@@ -16,7 +16,8 @@ import java.util.List;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Stateless
-public class ProjectServiceImpl implements ProjectService {
+public class ProjectServiceImpl
+        extends GenericServiceImpl<ProjectDTO, ProjectRepository, ProjectMapper> implements ProjectService {
     @Inject
     private ProjectRepository projectRepository;
     @Inject
@@ -35,5 +36,16 @@ public class ProjectServiceImpl implements ProjectService {
             return projectMapper.toDto(projects.get(0));
         }
         return null;
+    }
+
+
+    @Override
+    protected ProjectRepository getRepository() {
+        return projectRepository;
+    }
+
+    @Override
+    protected ProjectMapper getMapper() {
+        return projectMapper;
     }
 }

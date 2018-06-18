@@ -7,6 +7,7 @@ import ru.torgcrm.jee.ecommerce.repository.MenuRepository;
 import ru.torgcrm.jee.ecommerce.services.MenuService;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 /**
  * Service for menu
@@ -14,8 +15,13 @@ import javax.ejb.Stateless;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Stateless
-public class MenuServiceImpl extends GenericServiceImpl<MenuDTO, MenuRepository, MenuMapper>
+public class MenuServiceImpl extends AbstractProjectServiceImpl<MenuDTO, MenuRepository, MenuMapper>
         implements MenuService {
+    @Inject
+    MenuRepository repository;
+    @Inject
+    MenuMapper mapper;
+
     /**
      * {@inheritDoc}
      */
@@ -23,5 +29,16 @@ public class MenuServiceImpl extends GenericServiceImpl<MenuDTO, MenuRepository,
     public MenuDTO findByProjectIdAndCode(Long projectId, String code) {
         Menu menu = getRepository().findByProjectIdAndCode(projectId, code);
         return getMapper().toDto(menu);
+    }
+
+
+    @Override
+    protected MenuRepository getRepository() {
+        return repository;
+    }
+
+    @Override
+    protected MenuMapper getMapper() {
+        return mapper;
     }
 }

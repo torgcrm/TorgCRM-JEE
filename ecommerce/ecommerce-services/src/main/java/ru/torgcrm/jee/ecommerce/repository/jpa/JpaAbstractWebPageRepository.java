@@ -1,7 +1,7 @@
 package ru.torgcrm.jee.ecommerce.repository.jpa;
 
 import org.apache.log4j.Logger;
-import ru.torgcrm.jee.ecommerce.domain.AbstractWebPage;
+import ru.torgcrm.jee.ecommerce.domain.AbstractWebPageEntity;
 import ru.torgcrm.jee.ecommerce.repository.AbstractWebPageRepository;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -11,7 +11,7 @@ import javax.persistence.criteria.Root;
 /**
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public class JpaAbstractWebPageRepository<T extends AbstractWebPage> extends JpaGenericRepository<T>
+public class JpaAbstractWebPageRepository<T extends AbstractWebPageEntity> extends JpaAbstractProjectRepository<T>
         implements AbstractWebPageRepository<T> {
 
     private final Logger log = Logger.getLogger(JpaProductRepository.class);

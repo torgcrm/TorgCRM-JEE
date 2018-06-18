@@ -12,7 +12,7 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @ApplicationScoped
-public class JpaMenuRepository extends JpaGenericRepository<Menu>
+public class JpaMenuRepository extends JpaAbstractProjectRepository<Menu>
         implements MenuRepository {
     private final Logger log = Logger.getLogger(JpaMenuRepository.class);
 

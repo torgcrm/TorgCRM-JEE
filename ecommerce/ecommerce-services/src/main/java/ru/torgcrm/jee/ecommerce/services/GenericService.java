@@ -26,19 +26,17 @@ public interface GenericService<D extends GenericDTO> {
     D findById(Long id);
 
     /**
-     * Find all products by project id {@link ru.torgcrm.jee.ecommerce.domain.Project}
-     *
-     * @param projectId project id
-     * @return {@link GenericDTO}
-     */
-    List<D> findAllByProjectId(Long projectId);
-
-    /**
      * Save entity to database
      *
-     * @param entity DTO
+     * @param dto DTO
      */
-    D save(D entity);
+    D persist(D dto);
+
+    /**
+     * Merge dto to database
+     * @return
+     */
+    D merge(D dto);
 
     /**
      * Delete entity by id

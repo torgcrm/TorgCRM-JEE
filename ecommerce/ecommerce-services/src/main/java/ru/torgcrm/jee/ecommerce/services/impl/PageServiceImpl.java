@@ -6,6 +6,7 @@ import ru.torgcrm.jee.ecommerce.repository.PageRepository;
 import ru.torgcrm.jee.ecommerce.services.PageService;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 /**
  * Implementation of page service {@link PageService}
@@ -15,4 +16,18 @@ import javax.ejb.Stateless;
 @Stateless
 public class PageServiceImpl extends AbstractWebPageServiceImpl<PageDTO, PageRepository, PageMapper>
         implements PageService {
+    @Inject
+    PageRepository repository;
+    @Inject
+    PageMapper mapper;
+
+    @Override
+    protected PageRepository getRepository() {
+        return repository;
+    }
+
+    @Override
+    protected PageMapper getMapper() {
+        return mapper;
+    }
 }

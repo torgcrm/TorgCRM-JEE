@@ -11,6 +11,6 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @ApplicationScoped
-public class JpaMenuItemRepository extends JpaGenericRepository<MenuItem>
+public class JpaMenuItemRepository extends JpaAbstractProjectRepository<MenuItem>
         implements MenuItemRepository {
 }

@@ -43,7 +43,7 @@ public class CRMProductResource extends AbstractResource {
             rawDataDtoList.add(rawDataDTO);
         });
         product.setRawData(rawDataDtoList);
-        productService.save(product);
+        productService.persist(product);
         return getOkStatus();
     }
 }

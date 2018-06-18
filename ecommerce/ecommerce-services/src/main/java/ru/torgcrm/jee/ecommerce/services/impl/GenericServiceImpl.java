@@ -6,7 +6,6 @@ import ru.torgcrm.jee.ecommerce.mappers.EntityMapper;
 import ru.torgcrm.jee.ecommerce.repository.GenericRepository;
 import ru.torgcrm.jee.ecommerce.services.GenericService;
 
-import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -18,20 +17,14 @@ public abstract class GenericServiceImpl<
         D extends GenericDTO,
         R extends GenericRepository,
         M extends EntityMapper> implements GenericService<D> {
-
-    @Inject
-    private R repository;
-    @Inject
-    private M mapper;
-
     /**
      * {@inheritDoc}
      */
     @Override
     public List findAll() {
-        List list = repository.findAll();
+        List list = getRepository().findAll();
         if (list != null) {
-            return mapper.toDto(list);
+            return getMapper().toDto(list);
         }
         return null;
     }
@@ -41,9 +34,9 @@ public abstract class GenericServiceImpl<
      */
     @Override
     public D findById(Long id) {
-        GenericEntity entity = repository.findById(id);
+        GenericEntity entity = getRepository().findById(id);
         if (entity != null) {
-            return (D) mapper.toDto(entity);
+            return (D) getMapper().toDto(entity);
         }
         return null;
     }
@@ -51,35 +44,27 @@ public abstract class GenericServiceImpl<
     /**
      * {@inheritDoc}
      */
-    @Override
-    public List findAllByProjectId(Long projectId) {
-        List list = repository.findAllByProjectId(projectId);
-        if (list != null) {
-            return mapper.toDto(list);
-        }
-        return null;
+    public D persist(D dto) {
+        GenericEntity saved = getRepository().persist(getMapper().toEntity(dto));
+        return (D) getMapper().toDto(saved);
     }
 
     /**
      * {@inheritDoc}
      */
-    public D save(D dto) {
-        GenericEntity saved = repository.persist(mapper.toEntity(dto));
-        return (D) mapper.toDto(saved);
+    public D merge(D dto) {
+        GenericEntity saved = getRepository().merge(getMapper().toEntity(dto));
+        return (D) getMapper().toDto(saved);
     }
 
     /**
      * {@inheritDoc}
      */
     public void delete(Long id) {
-        repository.delete(id);
+        getRepository().delete(id);
     }
 
-    protected R getRepository() {
-        return repository;
-    }
+    abstract protected R getRepository();
 
-    protected M getMapper() {
-        return mapper;
-    }
+    abstract protected M getMapper();
 }

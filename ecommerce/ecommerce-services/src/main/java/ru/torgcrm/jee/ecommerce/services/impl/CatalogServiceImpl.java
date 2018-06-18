@@ -6,6 +6,7 @@ import ru.torgcrm.jee.ecommerce.repository.CatalogRepository;
 import ru.torgcrm.jee.ecommerce.services.CatalogService;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 /**
  * Service for {@link CatalogRepository}
@@ -13,6 +14,21 @@ import javax.ejb.Stateless;
  * @author Ilya Durdyev, funbanji@gmail.com
  */
 @Stateless
-public class CatalogServiceImpl extends GenericServiceImpl<CatalogDTO, CatalogRepository, CatalogMapper>
+public class CatalogServiceImpl extends AbstractWebPageServiceImpl<CatalogDTO, CatalogRepository, CatalogMapper>
         implements CatalogService {
+
+    @Inject
+    CatalogRepository repository;
+    @Inject
+    CatalogMapper mapper;
+
+    @Override
+    protected CatalogRepository getRepository() {
+        return repository;
+    }
+
+    @Override
+    protected CatalogMapper getMapper() {
+        return mapper;
+    }
 }

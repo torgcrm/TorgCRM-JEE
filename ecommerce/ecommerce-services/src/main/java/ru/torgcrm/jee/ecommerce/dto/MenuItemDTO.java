@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-public class MenuItemDTO extends AbstractProjectDTO {
+public class MenuItemDTO extends AbstractWebPageDTO {
     private String name;
     private String code;
     private String link;

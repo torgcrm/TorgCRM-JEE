@@ -7,5 +7,5 @@ import ru.torgcrm.jee.ecommerce.domain.Customer;
  *
  * @author Ilya Durdyev, funbanji@gmail.com
  */
-public interface CustomerRepository extends GenericRepository<Customer> {
+public interface CustomerRepository extends AbstractProjectRepository<Customer> {
 }
