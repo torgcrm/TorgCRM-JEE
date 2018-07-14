@@ -42,4 +42,8 @@ public class CatalogGenerator extends AbstractGenerator<Catalog, CatalogDTO> {
         catalogDto.setTitle(dataFactory.getRandomWord());
         return catalogDto;
     }
+
+    public void setProjectGenerator(ProjectGenerator projectGenerator) {
+        this.projectGenerator = projectGenerator;
+    }
 }

@@ -29,7 +29,7 @@ public class CatalogResource extends AbstractResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List getCatalog() {
+    public List getCatalogList() {
         return catalogService.findAllByProjectId(getCurrentProjectId());
     }
 

@@ -11,6 +11,8 @@ import ru.torgcrm.jee.ecommerce.dto.ProjectDTO;
 import ru.torgcrm.jee.ecommerce.services.CatalogService;
 import ru.torgcrm.jee.ecommerce.services.ProductService;
 import ru.torgcrm.jee.ecommerce.services.ProjectService;
+import ru.torgcrm.jee.ecommerce.utils.generators.CatalogGenerator;
+import ru.torgcrm.jee.ecommerce.utils.generators.ProjectGenerator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -30,6 +32,9 @@ public class CatalogResourceTest {
     @Mock
     HttpServletRequest request;
 
+    CatalogGenerator catalogGenerator;
+    ProjectGenerator projectGenerator;
+
     @Before
     public void init() {
         catalogResource = new CatalogResource();
@@ -37,21 +42,27 @@ public class CatalogResourceTest {
         catalogResource.productService = productService;
         catalogResource.projectService = projectService;
         catalogResource.request = request;
+
+        projectGenerator = new ProjectGenerator();
+        catalogGenerator = new CatalogGenerator();
+        catalogGenerator.setProjectGenerator(projectGenerator);
     }
 
     @Test
     public void test() {
         List<CatalogDTO> catalogDTOS = new ArrayList<>();
-        catalogDTOS.add(new CatalogDTO());
-        ProjectDTO projectDTO = new ProjectDTO();
+        catalogDTOS.add(catalogGenerator.createDto());
+        catalogDTOS.add(catalogGenerator.createDto());
+
+        ProjectDTO projectDTO = projectGenerator.createDto();
         projectDTO.setId(1L);
 
         Mockito.doReturn("test").when(request).getHeader(PROJECT_HOST_HEADER);
         Mockito.doReturn(projectDTO).when(projectService).findOneByHost("test");
-        Mockito.doReturn(catalogDTOS).when(catalogService).findAllByProjectId(1L);
+        Mockito.doReturn(catalogDTOS).when(catalogService).findAllByProjectId(projectDTO.getId());
         catalogResource.getCurrentProject();
 
-        List<CatalogDTO> catalogDTOList = catalogResource.getCatalog();
+        List<CatalogDTO> catalogDTOList = catalogResource.getCatalogList();
         System.out.println(catalogDTOList.size());
     }
 }
