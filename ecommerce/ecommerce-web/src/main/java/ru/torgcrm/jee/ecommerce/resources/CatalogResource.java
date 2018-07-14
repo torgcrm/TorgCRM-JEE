@@ -23,9 +23,9 @@ import java.util.List;
 public class CatalogResource extends AbstractResource {
 
     @Inject
-    private CatalogService catalogService;
+    CatalogService catalogService;
     @Inject
-    private ProductService productService;
+    ProductService productService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

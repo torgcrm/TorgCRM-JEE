@@ -17,9 +17,9 @@ public abstract class AbstractResource {
     private final String PROJECT_HOST_HEADER = "Project-Host";
     @Context
     @Getter
-    private HttpServletRequest request;
+    HttpServletRequest request;
     @Inject
-    private ProjectService projectService;
+    ProjectService projectService;
 
     protected String getProjectHost() {
         return request.getHeader(PROJECT_HOST_HEADER);

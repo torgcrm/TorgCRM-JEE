@@ -1,0 +1,16 @@
+<!DOCTYPE resources PUBLIC
+        "-//GlassFish.org//DTD GlassFish Application Server 3.1
+        Resource Definitions//EN"
+        "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+    <jdbc-resource pool-name="TorgCRM_Postgres" jndi-name="jdbc/TorgCRM_Main"></jdbc-resource>
+    <jdbc-connection-pool non-transactional-connections="true"
+                          datasource-classname="org.postgresql.xa.PGXADataSource"
+                          name="TorgCRM_Postgres" res-type="javax.sql.XADataSource">
+        <property name="password" value="torgcrm"></property>
+        <property name="databaseName" value="torgcrm"></property>
+        <property name="serverName" value="localhost"></property>
+        <property name="user" value="torgcrm"></property>
+        <property name="portNumber" value="5432"></property>
+    </jdbc-connection-pool>
+</resources>
