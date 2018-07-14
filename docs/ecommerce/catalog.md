@@ -4,12 +4,12 @@
 
 |     Method     |       Description       | HTTP method |
 |----------------|-------------------------|-------------|
-| getCatalogList | Get catalog list        | GET         |
-| createCatalog  | Create new Catalog      | POST        |
-| updateCatalog  | Update existing Catalog | PATCH       |
-| deleteCatalog  | Delete by id            | DELETE      |
+| [getCatalogList](#getCatalogList) | Get catalog list        | GET         |
+| [createCatalog](#createCatalog)   | Create new Catalog      | POST        |
+| [updateCatalog](#updateCatalog)   | Update existing Catalog | PATCH       |
+| [deleteCatalog](#deleteCatalog)   | Delete by id            | DELETE      |
 
-## getCatalogList
+## <a name="getCatalogList"></a> getCatalogList
 
 Get list of catalog entity.
 
@@ -24,7 +24,37 @@ Get list of catalog entity.
 
 [Catalog entity](#catalog_entity)
 
-## createCatalog
+## <a name="createCatalog"></a> createCatalog
+
+Method for new catalog creation.
+
+#### Input params
+
+[Catalog entity](#catalog_entity)
+
+#### Output params
+
+[Catalog entity](#catalog_entity) with new ID from database sequence.
+
+## <a name="updateCatalog"></a> updateCatalog
+
+#### Input params
+
+[Catalog entity](#catalog_entity)
+
+#### Output params
+
+## <a name="deleteCatalog"></a> deleteCatalog
+
+#### Input params
+
+| Field | Type | Description |
+|-------|------|-------------|
+| ID    | int  | Catalog id  |
+
+#### Output params
+
+[Catalog entity](#catalog_entity) updated.
 
 ## <a name="catalog_entity"></a> Catalog entity
 
