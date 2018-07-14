@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import ru.torgcrm.jee.ecommerce.dto.CatalogDTO;
 import ru.torgcrm.jee.ecommerce.dto.ProjectDTO;
+import ru.torgcrm.jee.ecommerce.filters.PageFilter;
 import ru.torgcrm.jee.ecommerce.services.CatalogService;
 import ru.torgcrm.jee.ecommerce.services.ProductService;
 import ru.torgcrm.jee.ecommerce.services.ProjectService;
@@ -62,7 +63,7 @@ public class CatalogResourceTest {
         Mockito.doReturn(catalogDTOS).when(catalogService).findAllByProjectId(projectDTO.getId());
         catalogResource.getCurrentProject();
 
-        List<CatalogDTO> catalogDTOList = catalogResource.getCatalogList();
+        List<CatalogDTO> catalogDTOList = catalogResource.getCatalogList(new PageFilter());
         System.out.println(catalogDTOList.size());
     }
 }

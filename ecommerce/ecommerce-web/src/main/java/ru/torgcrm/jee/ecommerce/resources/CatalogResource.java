@@ -1,15 +1,14 @@
 package ru.torgcrm.jee.ecommerce.resources;
 
-import ru.torgcrm.jee.ecommerce.dto.ProductDTO;
+import ru.torgcrm.jee.ecommerce.annotations.PATCH;
+import ru.torgcrm.jee.ecommerce.dto.CatalogDTO;
+import ru.torgcrm.jee.ecommerce.filters.PageFilter;
 import ru.torgcrm.jee.ecommerce.services.CatalogService;
 import ru.torgcrm.jee.ecommerce.services.ProductService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -20,6 +19,8 @@ import java.util.List;
  */
 @Path("/catalog")
 @Stateless
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class CatalogResource extends AbstractResource {
 
     @Inject
@@ -28,15 +29,26 @@ public class CatalogResource extends AbstractResource {
     ProductService productService;
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List getCatalogList() {
+    @Path("/list")
+    public List getCatalogList(PageFilter pageFilter) {
         return catalogService.findAllByProjectId(getCurrentProjectId());
     }
 
-    @GET
-    @Path("{slug}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<ProductDTO> getProductsByCatalogSlug(@PathParam("slug") String slug) {
-        return productService.findAllByCatalogSlug(slug);
+    @POST
+    @Path("/create")
+    public CatalogDTO createCatalog(CatalogDTO catalog) {
+        return catalogService.persist(catalog);
+    }
+
+    @PATCH
+    @Path("/update")
+    public CatalogDTO updateCatalog(CatalogDTO catalog) {
+        return catalogService.merge(catalog);
+    }
+
+    @DELETE
+    @Path("/delete/{id}")
+    public String deleteCatalog(@PathParam("id") Long id) {
+        return getOkStatus();
     }
 }

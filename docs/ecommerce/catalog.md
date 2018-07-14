@@ -2,12 +2,12 @@
 
 ## Methods
 
-|     Method     |       Description       | HTTP method |
-|----------------|-------------------------|-------------|
-| [getCatalogList](#getCatalogList) | Get catalog list        | GET         |
-| [createCatalog](#createCatalog)   | Create new Catalog      | POST        |
-| [updateCatalog](#updateCatalog)   | Update existing Catalog | PATCH       |
-| [deleteCatalog](#deleteCatalog)   | Delete by id            | DELETE      |
+|     Method     |  URL            |       Description       | HTTP method   |
+|----------------|-----------------|-------------------------|---------------|
+| [getCatalogList](#getCatalogList)| /catalog/list       | Get catalog list        | GET         |
+| [createCatalog](#createCatalog)  | /catalog/create     | Create new Catalog      | POST        |
+| [updateCatalog](#updateCatalog)  | /catalog/update     | Update existing Catalog | PATCH       |
+| [deleteCatalog](#deleteCatalog)  | /catalog/delete/{id}| Delete by id            | DELETE      |
 
 ## <a name="getCatalogList"></a> getCatalogList
 
@@ -15,10 +15,7 @@ Get list of catalog entity.
 
 #### Input params
 
-| Field   | Type | Description       |
-|---------|------|-------------------|
-| page    | int  | Current page      |
-| perPage | int  | Elements per page |
+[Page filter](#page_filter)
 
 #### Output params
 
@@ -70,3 +67,20 @@ Method for new catalog creation.
 | project         | Project        | Related project          |
 | created         | Date           | Created date time        |
 | updated         | Date           | Last updated date        |
+
+## <a name="page_filter"></a> Page filter
+
+Class for filter elements.
+
+```java
+public class PageFilter {
+    private Long id;
+    private String title;
+    private String slug;
+    private Long currentPage;
+    private Long perPage;
+    private Date created;
+    private Date updated;
+    private Long projectId;
+}
+```
