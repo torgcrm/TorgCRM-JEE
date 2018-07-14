@@ -8,7 +8,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import ru.torgcrm.jee.ecommerce.dto.CatalogDTO;
 import ru.torgcrm.jee.ecommerce.dto.ProjectDTO;
-import ru.torgcrm.jee.ecommerce.filters.PageFilter;
+import ru.torgcrm.jee.ecommerce.dto.PageFilter;
 import ru.torgcrm.jee.ecommerce.services.CatalogService;
 import ru.torgcrm.jee.ecommerce.services.ProductService;
 import ru.torgcrm.jee.ecommerce.services.ProjectService;

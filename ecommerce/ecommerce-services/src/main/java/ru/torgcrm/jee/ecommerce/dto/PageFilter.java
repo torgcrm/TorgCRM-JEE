@@ -1,4 +1,4 @@
-package ru.torgcrm.jee.ecommerce.filters;
+package ru.torgcrm.jee.ecommerce.dto;
 
 import lombok.Data;
 

@@ -1,9 +1,9 @@
-package ru.torgcrm.jee.filters;
+package ru.torgcrm.jee.ecommerce.filters;
 
 import io.jsonwebtoken.Jwts;
 import lombok.extern.log4j.Log4j;
 import org.apache.log4j.Level;
-import ru.torgcrm.jee.security.Secured;
+import ru.torgcrm.jee.ecommerce.security.Secured;
 
 import javax.annotation.Priority;
 import javax.crypto.spec.SecretKeySpec;
@@ -13,7 +13,6 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
-import java.io.IOException;
 import java.security.Key;
 
 /**

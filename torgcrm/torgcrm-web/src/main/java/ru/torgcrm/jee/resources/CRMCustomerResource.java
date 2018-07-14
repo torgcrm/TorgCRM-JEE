@@ -3,7 +3,7 @@ package ru.torgcrm.jee.resources;
 import ru.torgcrm.jee.ecommerce.dto.CustomerDTO;
 import ru.torgcrm.jee.ecommerce.resources.AbstractResource;
 import ru.torgcrm.jee.ecommerce.services.CustomerService;
-import ru.torgcrm.jee.security.Secured;
+import ru.torgcrm.jee.ecommerce.security.Secured;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

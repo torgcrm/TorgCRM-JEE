@@ -43,7 +43,7 @@ public abstract class AbstractDatabaseTest {
 
         postgres.getProcess().get().importFromFile(
                 new File(JpaProductRepository.class.getClassLoader()
-                        .getResource("db/migrations/V1__20180304_init.sql").getFile()));
+                        .getResource("db/migrations/V20180304__baseline.sql").getFile()));
     }
 
     @Deployment

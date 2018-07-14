@@ -9,7 +9,7 @@ import ru.torgcrm.jee.ecommerce.resources.AbstractResource;
 import ru.torgcrm.jee.ecommerce.services.OrderService;
 import ru.torgcrm.jee.ecommerce.services.ProductService;
 import ru.torgcrm.jee.ecommerce.services.ProjectService;
-import ru.torgcrm.jee.security.Secured;
+import ru.torgcrm.jee.ecommerce.security.Secured;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

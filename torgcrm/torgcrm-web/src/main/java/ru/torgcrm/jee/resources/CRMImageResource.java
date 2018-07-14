@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j;
 import ru.torgcrm.jee.ecommerce.dto.RawDataDTO;
 import ru.torgcrm.jee.ecommerce.resources.AbstractResource;
 import ru.torgcrm.jee.ecommerce.services.RawDataService;
-import ru.torgcrm.jee.security.Secured;
+import ru.torgcrm.jee.ecommerce.security.Secured;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

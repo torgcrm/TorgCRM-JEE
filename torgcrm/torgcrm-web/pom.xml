@@ -27,7 +27,6 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.9.0</version>
         </dependency>
 
         <!-- Flowable -->
@@ -72,6 +71,12 @@
             <groupId>ru.torgcrm.jee.ecommerce</groupId>
             <artifactId>ecommerce-bpmn</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flowable</groupId>
+            <artifactId>flowable-form-engine</artifactId>
+            <version>6.3.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

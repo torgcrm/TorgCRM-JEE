@@ -29,6 +29,7 @@ public class FlyWayMigrator {
         try {
             Flyway flyway = new Flyway();
             flyway.setDataSource(dataSource);
+            flyway.setBaselineOnMigrate(true);
             flyway.migrate();
         } catch (FlywayException e) {
             log.error("Can't migrate database script: " + e.getMessage());

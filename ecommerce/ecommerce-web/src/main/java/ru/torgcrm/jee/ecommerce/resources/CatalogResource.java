@@ -2,7 +2,8 @@ package ru.torgcrm.jee.ecommerce.resources;
 
 import ru.torgcrm.jee.ecommerce.annotations.PATCH;
 import ru.torgcrm.jee.ecommerce.dto.CatalogDTO;
-import ru.torgcrm.jee.ecommerce.filters.PageFilter;
+import ru.torgcrm.jee.ecommerce.dto.PageFilter;
+import ru.torgcrm.jee.ecommerce.security.Secured;
 import ru.torgcrm.jee.ecommerce.services.CatalogService;
 import ru.torgcrm.jee.ecommerce.services.ProductService;
 
@@ -34,18 +35,21 @@ public class CatalogResource extends AbstractResource {
         return catalogService.findAllByProjectId(getCurrentProjectId());
     }
 
+    @Secured
     @POST
     @Path("/create")
     public CatalogDTO createCatalog(CatalogDTO catalog) {
         return catalogService.persist(catalog);
     }
 
+    @Secured
     @PATCH
     @Path("/update")
     public CatalogDTO updateCatalog(CatalogDTO catalog) {
         return catalogService.merge(catalog);
     }
 
+    @Secured
     @DELETE
     @Path("/delete/{id}")
     public String deleteCatalog(@PathParam("id") Long id) {

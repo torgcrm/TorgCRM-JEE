@@ -132,7 +132,7 @@
             <dependency>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>
-                <version>5.0.7</version>
+                <version>5.1.4</version>
             </dependency>
             <dependency>
                 <groupId>com.h2database</groupId>
@@ -184,6 +184,29 @@
                 <artifactId>datafactory</artifactId>
                 <version>0.8</version>
                 <type>jar</type>
+            </dependency>
+
+            <!--Query DSL-->
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>4.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>4.2.1</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-core</artifactId>
+                <version>4.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

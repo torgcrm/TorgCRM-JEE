@@ -1,4 +1,4 @@
-package ru.torgcrm.jee.security;
+package ru.torgcrm.jee.ecommerce.security;
 
 import javax.ws.rs.NameBinding;
 import java.lang.annotation.ElementType;

@@ -2,12 +2,12 @@
 
 ## Methods
 
-|     Method     |  URL            |       Description       | HTTP method   |
-|----------------|-----------------|-------------------------|---------------|
-| [getCatalogList](#getCatalogList)| /catalog/list       | Get catalog list        | GET         |
-| [createCatalog](#createCatalog)  | /catalog/create     | Create new Catalog      | POST        |
-| [updateCatalog](#updateCatalog)  | /catalog/update     | Update existing Catalog | PATCH       |
-| [deleteCatalog](#deleteCatalog)  | /catalog/delete/{id}| Delete by id            | DELETE      |
+|     Method     |  URL            |       Description   | HTTP method             | Secured             |
+|----------------|-----------------|---------------------|-------------------------|---------------------|
+| [getCatalogList](#getCatalogList)| /catalog/list       | Get catalog list        | GET         | false |
+| [createCatalog](#createCatalog)  | /catalog/create     | Create new Catalog      | POST        | true  |
+| [updateCatalog](#updateCatalog)  | /catalog/update     | Update existing Catalog | PATCH       | true  |
+| [deleteCatalog](#deleteCatalog)  | /catalog/delete/{id}| Delete by id            | DELETE      | true  |
 
 ## <a name="getCatalogList"></a> getCatalogList
 
